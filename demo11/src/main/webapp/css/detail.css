@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+*{
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    position: relative;
+}
+section.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    background-color: rgb(200, 175, 12);
+}
+section.header .container{
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+section.header .container .head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+section.header .container .head .logo {
+    flex: 1;
+    flex-basis: 15%;
+}
+section.header .container .head .logo h2{
+    font-weight: 400;
+    color: #fff;
+    font-size: 24px;
+}
+section.header .container .head .menu{
+    flex: 1;
+    flex-basis: 75%;
+}
+section.header .container .head .menu nav{
+    width: 100%;
+    position: relative;
+}
+section.header .container .head .menu nav ul{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+section.header .container .head .menu nav ul li{
+    list-style: none;
+}
+section.header .container .head .menu nav ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+section.header .container .head .menu nav ul li a:hover{
+    color: #BDBDBD;
+}
+section.header .container .head .cart{
+    flex: 1;
+    flex-basis: 10%;
+    color: #fff;
+    font-size: 24px;
+}
+section.detail-product::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#1d1c1c,#918f89);
+    clip-path: circle(30% at right 10%);
+}
+section.detail-product::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(#1d1c1c,#918f89);
+    clip-path: circle(30% at 10% 90%);
+}
+section.detail-product{
+    padding: 60px 0 0 0;
+    position: relative;
+}
+section.detail-product .container{
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+section.detail-product .container .detail{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section.detail-product .container .detail .text{
+    flex: 1;
+    text-align: center;
+}
+section.detail-product .container .detail .text h3{
+    font-size: 32px;
+    background:linear-gradient(to right,#848484,#424242);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent
+}
+section.detail-product .container .detail .text p{
+    font-weight: 200;
+    color: rgba(0, 0, 0, .8);
+    font-size: 24px;
+}
+section.detail-product .container .detail .text button{
+    font-size: 20px;
+    padding: 10px 15px;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    background: rgb(46, 200, 12);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+section.detail-product .container .detail .text button:hover{
+    opacity: 0.8;
+}
+section.detail-product .container .detail .image{
+    flex: 1;
+    text-align: center;
+}
+/* description */
+section.detail-product .container .description {
+    padding: 50px 0;
+}
+section.detail-product .container .description .input,
+section.box-des > div {
+    display: none;
+}
+section.detail-product .container .description #box1:checked ~ section.box-des .box1,
+section.detail-product .container .description #box2:checked ~ section.box-des .box2,
+section.detail-product .container .description #box3:checked ~ section.box-des .box3{
+    display: block;
+}
+section.detail-product .container .description nav {
+    width: 100%;
+    position: relative;
+}
+section.detail-product .container .description nav  ul {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+section.detail-product .container .description nav  ul li {
+    list-style: none;
+}
+section.detail-product .container .description nav  ul li label{
+    padding: 10px 15px;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    font-size: 18px;
+}
+section.detail-product .container .description section.box-des {
+    padding: 50px;
+    border:1px solid #1d1c1c;
+}
+section.detail-product .container .description #box1:checked  ~ nav  ul li .check1,
+section.detail-product .container .description #box2:checked  ~ nav  ul li .check2,
+section.detail-product .container .description #box3:checked  ~ nav  ul li .check3 {
+    background-color: #ccc;
+}
+
+
+
+

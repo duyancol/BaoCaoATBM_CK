@@ -1,0 +1,174 @@
+.row .container{
+    text-transform: none;
+
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    width:100%;
+    resize: vertical;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.2);
+}
+input[type=text]:focus, input[type=password]:focus {
+    outline: none;
+}
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+.row .clearfix a{
+    text-align: center;
+    background-color: #2e2d2d;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+button:hover {
+    opacity:1;
+}
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+.signupbtn {
+    float: left;
+    width: 100%;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.2);
+}
+.container {
+    padding: 16px;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+@media (max-width:1030px) {
+    .container{
+        margin-left: -7%;
+    }
+    
+    
+    .header--contact{
+        display: block;
+        width: 80%;
+        height: 120%;
+    
+    }
+    .header--contact {
+        height: 50%;
+       display: flex;
+       justify-content: space-between;
+        
+       
+    }
+    .header--contact__careers{
+        display: none;
+    }
+    .header--logo_small{
+        margin-left: 10px;
+    }
+}
+
+   @media (max-width:400px) {
+    #showcart {
+        width: 200%;
+        height:15% ;
+    }
+    .header--logo_small{
+        width: 185%;
+    }
+    container .container--banner_content_grid{
+       
+        width: 180%;
+        margin-left: -10%;
+    }
+    container .container--banner_feedback_ele{
+        margin-left: 20%;
+    }
+    container .footer_container{
+        margin-left: 30%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    .drink-menu{
+        width: 150%;
+        margin-left:10%;
+    } 
+    .item-wrap {
+        height: 100%;
+    }
+    .item-wrap {
+        height: 100%;
+    }
+    footer{
+        width: 190%;
+    }
+   
+    footer .col-3 {
+        width: 40%;
+        
+        margin-left: 15%;
+    }
+    .header--contact{
+        display: block;
+        width: 170%;
+        height: 120%;
+       
+
+    }
+    .header--contact {
+        height: 50%;
+       display: flex;
+       justify-content: space-between;
+        
+       
+    }
+    .header .header--contact__ span{
+        display: none;
+    }
+    .bxs-note:before{
+        display: none;
+    }
+    .header--logo_small img{
+        margin-left: 20%;
+    }
+    .header--contact__ {
+        margin-left: 0%;
+        
+    }
+       /* trang dang nhap */
+       .container{
+        margin-left: 50%;
+    }
+    span{
+        margin-left: 0;
+    }
+     
+   }
+ 
+   

@@ -1,0 +1,82 @@
+@media (max-width:400px) {
+    #showcart {
+        width: 200%;
+        height:10% ;
+    }
+    .header--logo_small{
+        width: 170%;
+    }
+    container .container--banner_content_grid{
+
+        width: 180%;
+        margin-left: -10%;
+    }
+    container .container--banner_feedback_ele{
+        margin-left: 20%;
+    }
+    container .footer_container{
+        margin-left: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .drink-menu{
+        width: 150%;
+        margin-left:10%;
+    }
+    .item-wrap {
+        height: 100%;
+    }
+    .item-wrap {
+        height: 100%;
+    }
+    footer{
+        width: 175%;
+    }
+
+    footer .col-3 {
+        width: 40%;
+
+        margin-left: 15%;
+    }
+    .header--contact{
+        display: block;
+        width: 175%;
+        height: 120%;
+
+    }
+    .header--contact {
+        height: 50%;
+        display: flex;
+        justify-content: space-between;
+
+
+    }
+    .header .header--contact__ span{
+        display: none;
+    }
+    .bxs-note:before{
+        display: none;
+    }
+    .header--logo_small img{
+        margin-left: 20%;
+    }
+    .header--contact__ {
+        margin-left: 0%;
+
+    }
+    /* trang dang nhap */
+    .container{
+        margin-left: -10%;
+    }
+
+
+}
+@media (max-width:1030px) {
+
+}
+
+
+
+
+   
