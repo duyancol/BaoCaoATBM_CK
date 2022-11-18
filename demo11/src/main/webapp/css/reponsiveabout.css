@@ -1,0 +1,138 @@
+@media screen and (max-width: 1032px) {
+   .row .center{
+    width: 100%;
+    margin-left: -100px;
+   }
+ /* .box img{
+       height: 50%;
+       width: 100% !important;
+       margin-left: 0px;
+   } */
+   
+   .box .Index .item{
+      margin-left: -5%;
+   }
+   .boxphai{
+      width: 25%;
+   }
+   #img{
+      width: 50%;
+   }
+   .row .mb{
+      height: 20%;
+   }
+ }
+ @media screen and (max-width: 320px) {
+
+ }
+ #img{
+   margin-left: 5%;
+   width: 85%;
+}
+p{
+  padding: 20px;
+}
+@media (max-width:400px) {
+   .box p{
+      width: 700%;
+      margin-left: -70%;
+   }
+   .box h1{
+      width: 200%;
+      margin-bottom: -10%;
+   }
+   #img{
+      width: 480%;
+      margin-left: 40%;
+   }
+   .box h3  {
+      width: 500%;
+   }
+   .box h5{
+      width: 500%;
+   }
+   .box .Index .item{
+      margin-left: 100%;
+   }
+   #foos{
+      width: 100%;
+   }
+   #showcart {
+      width: 200%;
+      height:10% ;
+  }
+  .header--logo_small{
+      width: 180%;
+  }
+  container .container--banner_content_grid{
+     
+      width: 180%;
+      margin-left: -10%;
+  }
+  container .container--banner_feedback_ele{
+      margin-left: 20%;
+  }
+  container .footer_container{
+      margin-left: 30%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+  }
+  .drink-menu{
+      width: 150%;
+      margin-left:10%;
+  } 
+  .item-wrap {
+      height: 100%;
+  }
+  .item-wrap {
+      height: 100%;
+  }
+  footer{
+      width: 190%;
+  }
+ 
+  footer .col-3 {
+      width: 40%;
+      
+      margin-left: 15%;
+  }
+  .header--contact{
+      display: block;
+      width: 170%;
+      height: 120%;
+
+  }
+  .header--contact {
+    height: 50%;
+   display: flex;
+   justify-content: space-between;
+    
+   
+}
+     .header .header--contact__ span{
+         display: none;
+     }
+     .bxs-note:before{
+         display: none;
+     }
+     .header--logo_small img{
+         margin-left: 20%;
+     }
+     .header--contact__ {
+         margin-left: -10%;
+         width: 100%;
+     }
+     /* trang dang nhap */
+     .container{
+         margin-left: -10%;
+     }
+     .boxphai{
+        width: 130%;
+        margin-left:30%;
+     }
+     span{
+      margin-left: 0;
+  }
+
+}

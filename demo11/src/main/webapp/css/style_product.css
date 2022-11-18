@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+:root{
+    --primary-color:#4daf54;
+}
+/* body{
+    height: 100vh;
+    background: linear-gradient(to right ,#4daf54,#3d8880);
+    font-family: "Poppins";
+} */
+*{
+    margin: 0;
+    padding: 0;
+}
+.bottom-up{
+    /* margin: 120px auto; */
+
+    background: #272d40;
+
+    color: white;
+    position: relative;
+}
+.card_heart, .card_cart{
+    font-size: 25px;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+
+}
+.card_cart{
+    left: unset;
+    right: 20px;
+}
+.card_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card_img{
+    width: 90%;
+    margin-left: 15px;
+    margin-top: 15px;
+    transition: 0.5s;
+}
+.card_title, .card_price{
+    font-size: 15px;
+    font-weight: 900;
+    text-align: center;
+    transition: 0.5s;
+
+}
+
+.card_title{
+    color: var(--primary-color);
+}
+.card_size, .card_color{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.card_size span{
+    padding: 1px 5px;
+    background: #dadada;
+    color: black;
+    border-radius: 5px;
+    margin: 0 2px;
+}
+.card_color span{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 0 5px;
+
+}
+.card_greens{
+    background: green;
+}
+.card_red{
+    background: red;
+}
+.card_black{
+    background: black;
+}
+.card_action button{
+    background: var(--primary-color);
+    border: none;
+    outline: none;
+    color: white;
+    padding:10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+
+}
+/* .card:hover .card_img{
+    transform: rotate(-20deg) ;
+
+} */
+.card_action{
+    margin-top: 0px;
+
+}
+.card_action{
+    visibility: hidden;
+    opacity: 0;
+}
+.bottom-up:hover .card_action{
+    visibility:visible;
+    opacity: 100;
+    transition: 0.5s;
+    transition-delay:0.4s ;
+}
+.bottom-up:hover .card_size{
+    margin-top: 10px;
+    transition-delay: 0.4s;
+
+}
+.align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.drink-menu {
+    padding: 4rem;
+    background-color: var(--white);
+    border-radius: 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 90%;
+}
+
+
+
+.drink-menu p {
+    margin: 0.5rem 0;
+}
+
+.Vodka-cacloaivoka {
+    display: flex;
+}
+
+.Vodka-cacloaivoka button {
+    padding: .5rem 2.5rem;
+    margin: 0 1rem;
+    outline: none;
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+    font-weight: 200;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.Vodka-cacloaivoka button:hover,
+.Vodka-cacloaivoka button.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+
+.drink-item-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 3rem;
+
+
+}
+
+.drink-item {
+    width: 25%;
+    height: 30rem;
+    padding: 1rem;
+
+}
+
+.item-wrap {
+    height: 100%;
+    transition: .4s ease-in-out;
+    cursor: pointer;
+    border-radius: 2rem;
+}
+
+.item-wrap:hover {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.item-img {
+    height: 60%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2rem;
+}
+
+.img-holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: .5s ease-in-out;
+    border-radius: 2rem;
+}
+
+.img-holder:hover {
+    transform: scale(2) rotate(45deg);
+}
+
+.item-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding: 0 1rem;
+}
+
+
+
+.item-info>div:first-child {
+    text-align: left;
+}
+.bg-img {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.product_left{
+    display:flex;
+    justify-content: center;
+}
+.product_right{
+    display:flex;
+    justify-content: center;
+}
+@media only screen and (max-width: 680px) {
+
+
+
+
+    .Vodka-cacloaivoka   {
+        max-width: 40px;
+        margin-right: 20px;
+        font-size: 12px;
+        display: inline-block;
+
+
+    }
+    /* .text_product {
+        margin-left: -20px;
+
+     } */
+    /* .Vodka-cacloaivoka .zoom button{
+        width: 100%;
+    } */
+    .product_right{
+        margin-top: 20px;
+    }
+
+
+
+    .drink-menu {
+        padding: 4rem 0;
+    }
+
+    .drink-item {
+        width: 50%;
+        height: 25rem;
+    }
+
+    .drink-category {
+        overflow-y: scroll;
+    }
+
+    .drink-category button {
+        width: max-content;
+    }
+
+    .back-to-top {
+        bottom: 6rem;
+        right: 1rem;
+    }
+
+    .review-wrap.active {
+        transform: unset !important;
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+[class*="col-"] {
+    padding: 1rem;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.mb-nav {
+    display: none;
+}
+
+.drink-item-wrap>div {
+    display: none;
+}
+
+
+.drink-item-wrap.all>div {
+    display: block;
+}
+
+.drink-item-wrap.salad>div.salad-type {
+    display: block;
+}
+
+.drink-item-wrap.lorem>div.lorem-type {
+    display: block;
+}
+
+.drink-item-wrap.ipsum>div.ipsum-type {
+    display: block;
+}
+
+.drink-item-wrap.dolor>div.dolor-type {
+    display: block;
+}
+
+/* phan sự kien */
+
+.left-to-right {
+    transform: translateX(-150%);
+    transition: 1s ease-in-out;
+}
+
+.left-to-right.start {
+    transform: translateX(0);
+}
+
+.right-to-left {
+    transform: translateX(150%);
+    transition: 1s ease-in-out;
+}
+
+.right-to-left.start {
+    transform: translateX(0);
+}
+
+.zoom {
+    transform: scale(0);
+    transition: .6s ease-in-out;
+}
+
+.zoom.start {
+    transform: unset;
+}
+
+.bottom-up {
+    transform: translateY(30%);
+    transition: .8s ease-in-out;
+}
+
+.bottom-up.start {
+    transform: translateY(0);
+}
+
+.delay-2 {
+    transition-delay: .2s;
+}
+
+.delay-4 {
+    transition-delay: .4s;
+}
+
+.delay-6 {
+    transition-delay: .6s;
+}
+
+.delay-8 {
+    transition-delay: .8s;
+}
+
+.delay-10 {
+    transition-delay: .10s;
+}
+
+.delay-12 {
+    transition-delay: .12s;
+}
+.price{
+    margin-left: 70px;
+}
+.align-items-center{
+    z-index: 0;
+}
+.foost{
+    z-index: 2;
+}
+.drink-item-wrap .drink-item .item-wrap button{
+    background: var(--primary-color);
+    border: none;
+    outline: none;
+    color: white;
+    padding:10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 0px;
+    visibility: hidden;
+    opacity: 0;
+
+}
+
+.drink-item-wrap .drink-item:hover button{
+    visibility:visible;
+    opacity: 100;
+    transition: 0.5s;
+    transition-delay:0.4s ;
+}
+
+/*@media screen and (max-width: 1032px) {*/
+/*    .item-wrap{*/
+/*        height: 120%;*/
+/*    }*/
+/*}*/

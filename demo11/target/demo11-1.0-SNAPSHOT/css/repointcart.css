@@ -1,0 +1,136 @@
+.cart-seen{
+    display: flex;
+    justify-content: space-between;
+    margin:auto;
+    margin-top: 50px;
+}
+.continiu-bycart{
+margin-left: 240px;
+}
+.continiu-resent{
+    /*float: right;*/
+    /*clear: left;*/
+    margin-left: 32px;
+}
+/*.btn:hover{*/
+
+/*    background-image: linear-gradient(#f0f0f0,#aab7d1);*/
+/*    color: #1d1c1c;*/
+
+/*}*/
+/*.btn.thanhtoan:hover{*/
+
+
+/*    color: #1d1c1c;*/
+
+/*}*/
+.thongtin{
+
+    margin: 40px;
+
+}
+.danhmuc{
+    width: 210%;
+}
+.top10sp{
+    width: 210%;
+    margin-left: -10%;
+}
+
+@media (max-width:400px) {
+    #showcart {
+        width: 200%;
+        height:15% ;
+    }
+    .header--logo_small{
+        width: 185%;
+    }
+    container .container--banner_content_grid{
+       
+        width: 180%;
+        margin-left: -10%;
+    }
+    container .container--banner_feedback_ele{
+        margin-left: 20%;
+    }
+    container .footer_container{
+        margin-left: 30%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    .drink-menu{
+        width: 150%;
+        margin-left:10%;
+    } 
+    .item-wrap {
+        height: 100%;
+    }
+    .item-wrap {
+        height: 100%;
+    }
+    footer{
+        width: 190%;
+    }
+   
+    footer .col-3 {
+        width: 40%;
+        
+        margin-left: 15%;
+    }
+    .header--contact{
+        display: block;
+        width: 170%;
+        height: 120%;
+       
+
+    }
+    .header--contact {
+        height: 50%;
+       display: flex;
+       justify-content: space-between;
+        
+       
+    }
+    .header .header--contact__ span{
+        display: none;
+    }
+    .bxs-note:before{
+        display: none;
+    }
+    .header--logo_small img{
+        margin-left: 20%;
+    }
+    .header--contact__ {
+        margin-left: 0%;
+        
+    }
+       /* trang dang nhap */
+       .container{
+        margin-left: 50%;
+    }
+    span{
+        margin-left: 0;
+    }
+    .boxphai{
+        margin-top: -400%;
+        width: 80%;
+        margin-left: -30%;
+    }
+    .boxtrai{
+        width: 360%;
+    }
+    .class{
+        width: 95%;
+    }
+    .boxtitle {
+        width: 290%;
+    }
+    .boxfooter {
+        width: 290%;
+    }
+    .row{
+        margin-left: 0;
+    }
+}
+

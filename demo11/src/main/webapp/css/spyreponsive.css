@@ -1,0 +1,82 @@
+@media screen and (max-width: 1032px) {
+   .boxtrai{
+       height: 1500px !important;
+       margin-left: -160px;
+       width: 142%;
+   }
+   
+   button{
+       padding: 0!important;
+   }
+   .bg-img{
+       height:100%;
+   }
+   .bottom-up{
+       height: 250px;
+   }
+   .item-img{
+       height: 30%;
+   }
+   .drink-item{
+    width: 30%;
+    height: 70%;
+   }
+   .boxcontent{
+    width: 275%;
+
+   }
+   .mb{
+       max-width: 100%;
+   }
+   .boxtitle{
+       width: 295%;
+   }
+   .boxcontent2{
+       width: 320%;
+   }
+   .boxfooter{
+       width: 300%;
+   }
+   .item-wrap{
+       max-width:100% ;
+   
+      
+   }
+   .boxphai{
+    width: 100%;
+    margin-left: 4%;    
+
+}
+/*.header--contact{*/
+/*    display: block;*/
+
+/*    height: 120%;*/
+
+/*}*/
+/*.header--contact {*/
+/*    height: 8%;*/
+/*   display: flex;*/
+/*   justify-content: space-between;*/
+/*   width: 120%;*/
+/*    */
+/*   */
+/*}*/
+/*.header--contact__careers{*/
+/*    display: none;*/
+/*}*/
+/*.header--contact > div{*/
+/*    font-size: 32px;*/
+/*}*/
+/*.header *{*/
+/*    font-size: 32px;*/
+/*}*/
+footer{
+    width: 120%;
+}
+/*.header--logo_small{*/
+/*    width: 120%;*/
+/*}*/
+/*.header--logo_small img{*/
+/*    margin-left: 20%;*/
+/*}*/
+}

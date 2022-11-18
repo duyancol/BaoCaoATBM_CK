@@ -1,0 +1,153 @@
+.row p{
+    margin:5% 10%;
+    color: #1c1c1c;
+    font-weight: bolder;
+}
+.row .input{
+    width: 96.5%;
+    border:1px solid #1c1c1c;
+    color: #1c1c1c;
+}
+.boxtraiinput input{
+margin-left: 10%;
+padding: 5px;
+width: 80%;
+}
+.boxtraiinput textarea{
+    margin-left: 10%;
+    width: 81.5%;
+}
+.boxtraiinput button{
+    margin:5% 12% ;
+    padding: 1% 4%;
+    color: #1c1c1c;
+    font-weight: bolder;
+}
+textarea::placeholder{
+    margin: 100px;
+    text-indent:  10px;
+    text-shadow: 10px;
+   
+}
+textarea{
+    color: #1c1c1c;
+}
+iframe{
+    margin-left: 10%;
+    width: 80%;
+}
+.xemtrang{
+    width: 96.5%;
+    height: 30px;
+    background-color: #f0f0f0;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+}
+.boxcontent{
+    width: 88%;
+}
+@media (max-width:1000px) {
+   
+       
+   .boxcontent{
+      margin-left: 2%;
+      width: 180%;
+   }
+    
+}
+@media (max-width:400px) {
+    #showcart {
+        width: 200%;
+        height:15% ;
+    }
+    .header--logo_small{
+        width: 185%;
+    }
+    container .container--banner_content_grid{
+       
+        width: 180%;
+        margin-left: -10%;
+    }
+    container .container--banner_feedback_ele{
+        margin-left: 20%;
+    }
+    container .footer_container{
+        margin-left: 30%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    .drink-menu{
+        width: 150%;
+        margin-left:10%;
+    } 
+    .item-wrap {
+        height: 100%;
+    }
+    .item-wrap {
+        height: 100%;
+    }
+    footer{
+        width: 190%;
+    }
+   
+    footer .col-3 {
+        width: 40%;
+        
+        margin-left: 15%;
+    }
+    .header--contact{
+        display: block;
+        width: 170%;
+        height: 120%;
+       
+
+    }
+    .header--contact {
+        height: 50%;
+       display: flex;
+       justify-content: space-between;
+        
+       
+    }
+       .header .header--contact__ span{
+           display: none;
+       }
+       .bxs-note:before{
+           display: none;
+       }
+       .header--logo_small img{
+           margin-left: 20%;
+       }
+       .header--contact__ {
+           margin-left: -10%;
+           width: 100%;
+       }
+       /* trang dang nhap */
+       .container{
+        margin-left: 50%;
+    }
+    span{
+        margin-left: 0;
+    }
+    .boxphai{
+        margin-top: -200%;
+        width: 40%;
+        margin-left: 35%;
+    }
+    .boxtrai{
+        width: 330%;
+    }
+    .boxcontent {
+        margin-left: 2%;
+        width: 280%;
+    }
+    .boxcontent2 {
+        width: 315%;
+    }
+    
+     
+   }
+   
+   
