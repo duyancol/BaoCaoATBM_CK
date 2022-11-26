@@ -44,7 +44,7 @@ session.removeAttribute("cart");
 if(result){
     Email email1 = new Email();
     email1.setFrom("nguyenduy.30719@gmail.com");
-    email1.setFromPss("taclwrloeawzgafv");
+    email1.setFromPss("hwtuiyfvalxmlzxg");
     email1.setTo(email);
     email1.setSubject("The order you have placed :");
     StringBuilder sb= new StringBuilder();
