@@ -50,7 +50,7 @@ public class OrderDao {
                         .bind(1, product.getId())
                         .bind(2, product.getPrice())
                         .bind(3, product.getQuantitySol())
-                        .bind(4, "").execute();
+                        .bind(4, "Hãy giao hàng sớm").execute();
             }
             return sum;
         });
