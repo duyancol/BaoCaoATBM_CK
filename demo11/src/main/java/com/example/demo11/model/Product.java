@@ -94,18 +94,6 @@ public class Product {
         this.id = id;
     }
 
-    public Product(String id, String name, int price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
-    public Product(String id, String name) {
-        this.id = id;
-        this.name = name;
-
-    }
-
-
     public Product(String id, String name, int price, int quantity, String img, int saleprice, String mota, String idcategogy, String img1, String img2, String img3) {
         this.id = id;
         this.name = name;

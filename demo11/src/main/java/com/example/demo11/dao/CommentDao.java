@@ -60,7 +60,7 @@ public class CommentDao {
         CommentDao dao = new CommentDao();
 
 
-        System.out.println(dao.getAllComment1().get(0).getCommentid());
+        System.out.println(dao.getAllComment1().size());
     }
 
 

@@ -1,7 +1,6 @@
 package com.example.demo11.dao;
 
 import com.example.demo11.db.JDBIConnector;
-import com.example.demo11.model.Product;
 import com.example.demo11.model.danhmuc;
 
 import java.util.List;
@@ -17,21 +16,9 @@ public class dmdao {
     }
     public List<danhmuc> getAll(){
         return   JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select * from categoty").mapToBean(danhmuc.class).stream().collect(Collectors.toList());
+            return handle.createQuery("select * from categoty ").mapToBean(danhmuc.class).stream().collect(Collectors.toList());
         });
     }
-//    private static dmdao instance;
-//    public static dmdao getInstance(){
-//        if(instance == null){
-//            instance = new dmdao();
-//        }
-//        return instance;
-//    }
-//    public List<danhmuc> getAll(){
-//        return   JDBIConnector.get().withHandle(handle -> {
-//            return handle.createQuery("select * from categoty ").mapToBean(danhmuc.class).stream().collect(Collectors.toList());
-//        });
-//    }
 
 //    public Product getByID(String id){
 //
@@ -41,7 +28,7 @@ public class dmdao {
 //    }
 public static void main(String[] args) {
     dmdao dm = new dmdao();
-
-    System.out.println(dm.getAll().get(0).getNamecategogy());
+    int c =dm.getAll().size();
+    System.out.println(c);
 }
 }

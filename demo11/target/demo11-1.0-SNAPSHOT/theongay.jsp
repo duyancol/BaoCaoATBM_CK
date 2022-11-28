@@ -10,7 +10,16 @@
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
+<%--    <%  Map<String,TraSua> mapTS = new ThongKeDAO().thongKeTheoNgayHeThong();--%>
+<%--        String ok = (String) session.getAttribute("okngay");--%>
+<%--        String ngay= (String) session.getAttribute("ngay");--%>
+<%--        if(ok!=null){--%>
+<%--            if(ok.equals("ok")){--%>
+<%--                mapTS=new ThongKeDAO().thongKeTheoNgay(ngay);--%>
+<%--            }else{--%>
+<%--                mapTS=new ThongKeDAO().thongKeTheoNgayHeThong();--%>
+<%--            }--%>
+<%--        } %>--%>
     <script type="text/javascript">
         google.charts.load("current", {packages:["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
@@ -21,6 +30,11 @@
                 ['ettrtr',     11],
                 ['Work',     11]
 
+                // ['Work',     11],
+                // ['Eat',      2],
+                // ['Commute',  2],
+                // ['Watch TV', 2],
+                // ['Sleep',    7]
 
             ]);
 

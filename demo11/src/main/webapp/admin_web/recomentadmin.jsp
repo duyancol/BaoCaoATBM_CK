@@ -21,12 +21,9 @@
 
 
                 <div class="comment_box cs" style="width: 200%">
-                    <a href="PDDetailsServlet?id=${m.product.id}">
-                        <img src="${m.product.img}">
-                    </a>
-
+                    <img src="${m.product.img}">
                     <div>Name: "${m.product.name}"      ID:"${m.product.id}"</div>
-                    <a href="#"> <img src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=255&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7" alt="avatar"> </a>
+                    <a href="#"> <img src="avatar.jpg" alt="avatar"> </a>
                     <div class="inside_comment">
                         <div class="comment-meta">
                             <div class="commentsuser">${m.username} </div>
@@ -48,7 +45,7 @@
                         <!--Comment Box 2-->
                         <c:forEach items="${listRequestComment}" var="o">
                             <c:if test="${m.commentid==o.commentid}">
-                                <div class="comment_box" style="width: 350px"> <a href="#"> <img src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=255&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7" alt="avatar"> </a>
+                                <div class="comment_box" style="width: 350px"> <a href="#"> <img src="avatar.jpg" alt="avatar"> </a>
                                     <div class="inside_comment">
                                         <div class="comment-meta">
                                             <div class="commentsuser">${o.reusername}</div>

@@ -50,7 +50,10 @@ public class ADMINCOMENT {
         ResultSet resultSet = statement.executeQuery(sql);
 
         while (resultSet.next()) {
-
+//            Product d= new Product(resultSet.getString("id"),resultSet.getString("name"),resultSet.getInt("price")
+//            ,resultSet.getInt("quantity"),resultSet.getString("img"),resultSet.getInt("saleprice")
+//            ,resultSet.getString("mota"),resultSet.getString("idcategogy"),resultSet.getString("img1")
+//            ,resultSet.getString("img2"),resultSet.getString("img3"));
             String id = resultSet.getString("id");
             String name= resultSet.getString("name");
             int price = resultSet.getInt("price");

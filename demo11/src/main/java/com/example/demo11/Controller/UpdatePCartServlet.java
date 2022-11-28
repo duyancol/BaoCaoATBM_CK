@@ -13,7 +13,7 @@ import java.util.Map;
 public class UpdatePCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-doPost(request,response);
+
     }
 
     @Override
@@ -28,26 +28,13 @@ doPost(request,response);
        int quantity =cart.get(id).getQuantitySol();
        try {
            quantity=Integer.parseInt(request.getParameter("quantity"));
-           request.setAttribute("error","cart");
-
-
-
        }catch (NumberFormatException e){
-          response.getWriter().println(new Gson().toJson(Map.of("quantity",quantity)));
-
+           response.getWriter().println(new Gson().toJson(Map.of("quantity",quantity)));
            return;
        }
 
-
-
-
-
-
-           int quantityAfterUpdate = cart.UpdateQuantitySold(id,quantity);
-           session.setAttribute("cart",cart);
-           response.getWriter().println(new Gson().toJson(Map.of("quantity",quantityAfterUpdate)));
-
-
+      int quantityAfterUpdate = cart.UpdateQuantitySold(id,quantity);
+        session.setAttribute("cart",cart);
+        response.getWriter().println(new Gson().toJson(Map.of("quantity",quantityAfterUpdate)));
     }
-
 }

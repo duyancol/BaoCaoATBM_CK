@@ -5,11 +5,10 @@
   Time: 4:01 SA
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="com.google.gson.Gson" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
 <%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
-<%@ page import="com.google.gson.Gson" %>
 
 <html>
 <head>
@@ -113,15 +112,11 @@
 
         </tbody>
         <tr class="cart__price thead-dark">
-            <th colspan="6">Total:${cart.totalPrice}</th>
+            <th colspan="6">Tổng đơn hàng</th>
             <th>
-                <%--                <div class="total-cart">${cart.totalPrice} </div>--%>
-                <a  href="cart" style="text-decoration: none;margin-left: 0px;">
-                    <button type="button" class="btn btn-outline-success">Buy</button>
-                </a>
-                <%--                <div class="total-cart">--%>
-
-                <%--                </div>--%>
+                <%--                            <div class="total-cart">${cart.totalPrice} </div>--%>
+                <div class="total-cart"> </div>
+                <div class="total-cart-gh"> </div>
             </th>
 
         </tr>
@@ -386,7 +381,7 @@
                                     <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
                                     <ul class="htmlCss-sub-menu sub-menu">
                                         <c:forEach items="${pdlistcc}" var="cate">
-                                            <li><a href="ADMIN-P?idcategogy=${cate.idcategogy}">${cate.namecategogy}</a></li>
+                                            <li><a href="#">${cate.namecategogy}</a></li>
 
                                         </c:forEach>
                                         <li class="more">
@@ -399,30 +394,19 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Trademark</a>
+                                    <a href="#">Nhan hieu</a>
                                     <i class='bx bxs-chevron-down js-arrow arrow '></i>
                                     <ul class="js-sub-menu sub-menu">
-                                        ts<c:forEach items="${listTra}" var="t">
-                                        <li style="border-bottom: #939091 solid 1px;">
-                                            <a href="ListCateGory?nametrademark=${t.nametrademark}">
-                                                <img src="${t.imgtrademark}" style="width: 60px;height: 50px"> ${t.nametrademark}
-                                            </a>
-                                        </li>
-                                    </c:forEach>
+                                        <c:forEach items="${listTra}" var="t">
+                                            <li><a href="#">${t.nametrademark}</a></li>
+                                        </c:forEach>
                                     </ul>
                                 </li>
                                 <li><a href="#">Shop</a></li>
-                                <li>
-                                    <a href="#">About</a>
-                                    <i class='bx bxs-chevron-down js-arrow arrow '></i>
-                                    <ul class="js-sub-menu sub-menu" style="width: 400%">
-
-                                        <li style="border-bottom: #939091 solid 1px;"><a href="renew">  Recipe recipe</a></li>
-                                        <li style="border-bottom: #939091 solid 1px;"><a href="newdetail">  News</a></li>
-
-                                    </ul>
-                                </li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Tin tuc</a></li>
+                                <li><a href="#">Cong thuc pha che</a></li>
+                                <li><a href="#">Lien he</a></li>
                             </ul>
                         </div>
                         <div class="search-box">

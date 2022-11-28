@@ -26,13 +26,11 @@ doPost(request,response);
         request.setAttribute("list1",user);
         System.out.println(user.getRepss());
         if(ma.equals(user.getRepss())){
-            request.setAttribute("mess","Activation sucess !");
             request.getRequestDispatcher("formfor.jsp").forward(request,response);
 
 //            response.sendRedirect("formfor.jsp");
         }else{
-            request.setAttribute("mess","activation code is not correct !");
-            request.getRequestDispatcher("formfor.jsp").forward(request,response);
+            response.sendRedirect("doLogin");
         }
     }
 }

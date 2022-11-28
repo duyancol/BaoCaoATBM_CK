@@ -33,8 +33,8 @@ public class AdOrder {
                         rs.getInt(6),
                         rs.getString(4),
                         rs.getInt(3),
-                        rs.getDate(8),
-                        rs.getDate(9)));
+                        rs.getDate(7),
+                        rs.getDate(8)));
             }
         } catch (Exception e) {
         }
@@ -66,12 +66,12 @@ public class AdOrder {
     public List<Order> getAllOrderByName(User user) {
 
         List<Order> list = new ArrayList<>();
-            String query = "SELECT * FROM `order` WHERE user_id=?";
+            String query = "  SELECT * FROM `order` WHERE user_id =?";
 
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
-            ps.setString(1,user.getUsername());
+            ps.setString(1,user.getName());
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -81,8 +81,8 @@ public class AdOrder {
                         rs.getInt(6),
                         rs.getString(4),
                         rs.getInt(3),
-                        rs.getDate(8),
-                        rs.getDate(9)));
+                        rs.getDate(7),
+                        rs.getDate(8)));
             }
         } catch (Exception e) {
         }
@@ -160,8 +160,8 @@ public class AdOrder {
                         rs.getInt(6),
                         rs.getString(4),
                         rs.getInt(3),
+                        rs.getDate(7),
                         rs.getDate(8),
-                        rs.getDate(9),
                         rs.getInt(18),
                         rs.getString(12),
                         rs.getInt(13)));
@@ -173,7 +173,7 @@ public class AdOrder {
     public List<Order> getAllOrdertheomonth(String d) {
 
         List<Order> list = new ArrayList<>();
-        String query = "SELECT *,COUNT(product_id) AS total_tongsp FROM  `order` INNER JOIN order_detail ON  order_detail.order_id = `order`.id where created_at like ? GROUP BY product_id";
+        String query = "SELECT *,COUNT(product_id) AS total_tongsp FROM  `order` INNER JOIN order_detail ON  order_detail.order_id = `order`.id where create_at like ? GROUP BY product_id";
         String month = d.substring(0,d.indexOf("-"));
         String year=d.substring(d.indexOf("-")+1, d.length());
         try {
@@ -194,8 +194,8 @@ public class AdOrder {
                         rs.getInt(6),
                         rs.getString(4),
                         rs.getInt(3),
+                        rs.getDate(7),
                         rs.getDate(8),
-                        rs.getDate(9),
                         rs.getInt(18),
                         rs.getString(12),
                         rs.getInt(13)));
@@ -238,35 +238,13 @@ public class AdOrder {
         }
         return list;
     }
-    public List<Detail> getAllOrderdetail(String d) {
-        List<Detail> list = new ArrayList<>();
-        String query = "SELECT * FROM order_detail WHERE order_id=? ";
-        try {
-            conn = new DBContext().getConnection();//mo ket noi voi sql
-            ps = conn.prepareStatement(query);
-            ps.setString(1,d);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Product product = new Product(rs.getString(2),rs.getString(3));
-                list.add(new Detail(rs.getInt(1),
-                        product,
-                        rs.getInt(5),
-                        rs.getDouble(4)
-
-                        ));
-            }
-        } catch (Exception e) {
-        }
-        return list;
-    }
     public static void main(String[] args) {
     AdOrder dao = new AdOrder();
 
 
 
 
-        System.out.println(dao.getAllOrderdetail("11").size());
+        System.out.println(dao.getAllOrdertheongy12("2022-06-20").size());
     }
 
 }

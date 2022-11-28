@@ -23,11 +23,9 @@ public class Servlet3 extends HttpServlet {
         ProductAdminDao productAdminDao = new ProductAdminDao();
         List<Product> list = productAdminDao.getAllProduct();
 
-//        List<danhmuc> list1 = DMService.getInstance().getAll();
-//                    request.setAttribute("pdlistcc",list1);
+        List<danhmuc> list1 = DMService.getInstance().getAll();
+                    request.setAttribute("pdlistcc",list1);
         request.setAttribute("listDM",list);
-        List<danhmuc> list1 =DMService.getInstance().getAll();
-        request.setAttribute("listdm",list1);
         request.getRequestDispatcher("admin_web/product_add.jsp").forward(request,response);
     }
 }

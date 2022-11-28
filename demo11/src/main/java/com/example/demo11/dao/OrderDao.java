@@ -17,22 +17,11 @@ public class OrderDao {
         }
         return instance;
     }
-    public List<Detail> getAll(String id){
-        return   JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM order_detail WHERE order_id=?").bind(0,id).mapToBean(Detail.class).stream().collect(Collectors.toList());
-        });
-    }
-    public Order getByID(String id){
-
-        return   JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM `order` WHERE id=?").bind(0,id).mapToBean(Order.class).first();
-        });
-    }
 
     public boolean createOder(User user, Cart cart,String adress,String toltal) {
         int oderid = JDBIConnector.get().withHandle(handle -> {
             ResultBearing resultBearing = handle.createUpdate("INSERT INTO `order`(user_id,status,adress,phone,total,tichluy) VALUES (?,?,?,?,?,?);")
-                    .bind(0, user.getUsername())
+                    .bind(0, user.getName())
                     .bind(1, 0)
                     .bind(2,adress)
                     .bind(3,user.getPhone())
@@ -50,27 +39,17 @@ public class OrderDao {
                         .bind(1, product.getId())
                         .bind(2, product.getPrice())
                         .bind(3, product.getQuantitySol())
-                        .bind(4, "Hãy giao hàng sớm").execute();
+                        .bind(4, "").execute();
             }
             return sum;
         });
         int total1 = JDBIConnector.get().withHandle(handle -> {
             int sum = 0;
             for (Product product : cart.getProductList()) {
-                sum += handle.createUpdate("UPDATE user Set hide=? where username= ?;")
+                sum += handle.createUpdate("UPDATE test4 Set hide=? where name= ?;")
                         .bind(0,user.getHide()+( cart.getTotalPrice()/100))
-                        .bind(1, user.getUsername())
+                        .bind(1, user.getName())
                        .execute();
-            }
-            return sum;
-        });
-        int total2 = JDBIConnector.get().withHandle(handle -> {
-            int sum = 0;
-            for (Product product : cart.getProductList()) {
-                sum += handle.createUpdate("UPDATE product Set quantity=? where id= ?;")
-                        .bind(0,product.getQuantity()-product.getQuantitySol())
-                        .bind(1, product.getId())
-                        .execute();
             }
             return sum;
         });
@@ -112,10 +91,6 @@ public class OrderDao {
 //            return handle.createQuery("select * from `order` where created_at like  ?").bind(0,"%"+d+"%").mapToBean(Order.class).stream().collect(Collectors.toList());
 //        });
 //    }
-public static void main(String[] args) {
-    OrderDao orderDao = new OrderDao();
-    System.out.println(orderDao.getAll(String.valueOf(9)).size());
-}
 
 
 }

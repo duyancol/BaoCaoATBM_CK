@@ -176,9 +176,7 @@
 
         <td>
             <c:if test="${tra.status==0.0}">
-                <a href="userstatusControl?id=${tra.id}" style="background: rgba(250,61,61,0.68);padding: 5px;border-bottom-right-radius:8px ;border-top-left-radius: 8px"> Hủy</a>
-
-                <a href="ControlOrderDetail?id=${tra.id}" style="background: #c4e8ff;padding: 5px;border-bottom-right-radius:8px ;border-top-left-radius: 8px">Xem</a>
+                <a href="userstatusControl?id=${tra.id}" style="color: red"> Hủy</a>
             </c:if>
 
 

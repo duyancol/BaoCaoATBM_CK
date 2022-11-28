@@ -9,7 +9,7 @@ import java.util.Date;
 public class DBConnect {
     private static DBConnect instance;
     private Connection connection;
-    private static String db="jdbc:mysql://localhost:3306/shopweb";
+    private static String db="jdbc:mysql://localhost:3306/test1";
     private static String user="root";
     private static String pass="";
     private DBConnect(){

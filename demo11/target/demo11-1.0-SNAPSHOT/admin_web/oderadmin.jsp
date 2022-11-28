@@ -29,10 +29,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <link href="css/manager.css" rel="stylesheet" type="text/css"/>
 
 <style>
@@ -67,7 +65,7 @@
             </a>
         </li>
         <li>
-            <a href="tktn">
+            <a href="#">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Analytics</span>
             </a>
@@ -127,7 +125,7 @@
             <i class='bx bx-search' ></i>
         </div>
         <div class="profile-details">
-            <img src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=255&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7" alt="">
+            <img src="images/profile.jpg" alt="">
             <span class="admin_name">Prem Shahi</span>
             <i class='bx bx-chevron-down' ></i>
         </div>
@@ -146,14 +144,14 @@
                                     <div class="col-sm-6">
                                         <%--                                        <h2>Manage <b>Product</b></h2>--%>
                                     </div>
-<%--                                    <div class="col-sm-6">--%>
+                                    <div class="col-sm-6">
 
-<%--                                        <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>--%>
-<%--                                    </div>--%>
+                                        <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
+                                    </div>
                                 </div>
                             </div>
 
-                            <table id="" class="table table-striped table-hover">
+                            <table class="table table-striped table-hover">
                                 <thead>
                                 <tr>
                                     <th>
@@ -176,7 +174,7 @@
 
                                 <c:forEach var="tra" items="${listorder}">
                                     <form action="UpdateStatus" method="post">
-
+                                    <div>${tra.totalOder}</div>
                                     <tr>
                                         <td>
                                     <span class="custom-checkbox">
@@ -246,7 +244,18 @@
                                 </tbody>
 
                             </table>
-
+                            <div class="clearfix">
+                                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                                <ul class="pagination">
+                                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                </ul>
+                            </div>
                         </div>
                         <%--                        <a href="ProductServlet"><button type="button" class="btn btn-primary">Back to home</button></a>--%>
 
@@ -365,13 +374,7 @@
     </div>
 </section>
 <script src="js/manager.js" type="text/javascript"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-
-
 <script>
-
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");
     sidebarBtn.onclick = function() {
@@ -381,9 +384,6 @@
         }else
             sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
     }
-    $(document).ready(function () {
-        $('#example').DataTable();
-    });
 </script>
 
 </body>

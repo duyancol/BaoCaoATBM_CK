@@ -17,15 +17,15 @@
 <body>
 
 
-    <div id="reader" >
+    <div id="reader">
         <c:forEach items="${listComment}" var="m">
-        <ol style="width: 60%">
+        <ol>
             <li>
 
-                <div class="comment_box cs"> <a href="#"> <img src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=255&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7" alt="avatar"> </a>
+                <div class="comment_box cs"> <a href="#"> <img src="avatar.jpg" alt="avatar"> </a>
                     <div class="inside_comment">
                         <div class="comment-meta">
-                            <div class="commentsuser">${m.username} ${m.commentid} </div>
+                            <div class="commentsuser">${m.username} </div>
                             <div class="comment_date">December 1, 2012 at 1:32 am</div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="reply"> <a href="#" onclick="recomment('${m.commentid}')">Reply</a> </div>
-                    <form  method="post" class="reform" name="reform" style="background: rgba(87,184,70,0.17);padding: 20px;border-bottom-left-radius: 20px">
+                    <form  method="post" class="reform" name="reform">
                         <div class="commentfields">
                             <label class="name">Name <span>*</span></label>
                             <input name="reusername"  class="comment-input required" type="text" >
@@ -45,13 +45,13 @@
                             <textarea  class="comment-textarea required" name="recontent"></textarea>
                         </div>
                         <div class="commentfields">
-                            <input style="border-bottom-left-radius: 7px" class="commentbtn" type="button" value="send" onclick="showAlert('${m.commentid}','${m.id}'),recomment('${m.commentid}')"  >
+                            <input class="commentbtn" type="button" value="post" onclick="showAlert('${m.commentid}','${m.id}'),recomment('${m.commentid}')"  >
                         </div>
                     </form>
                     <br>
 
 
-                    <div> <button onclick="showAlert('${m.commentid}','${m.id}')"> >> </button></div>
+                    <div> <button onclick="showAlert('${m.commentid}','${m.id}')">BL</button></div>
                     <div class="arrow-down"></div>
                 </div>
 
@@ -62,7 +62,7 @@
                         <!--Comment Box 2-->
             <c:forEach items="${listRequestComment}" var="o">
                 <c:if test="${m.commentid==o.commentid}">
-                    <div class="comment_box" style="background: rgb(200, 175, 12,0.2);width: 160%">  <a href="#"> <img src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=255&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7" alt="avatar" > </a>
+                    <div class="comment_box" style="background: rgb(200, 175, 12,0.2);">  <a href="#"> <img src="avatar.jpg" alt="avatar" > </a>
                         <div class="inside_comment">
                             <div class="comment-meta">
                                 <div class="commentsuser">${o.reusername}</div>

@@ -26,7 +26,7 @@
 <!--    </servlet-mapping>-->
     <context-param>
         <param-name>jdbcURL</param-name>
-        <param-value>jdbc:mysql://localhost:3306/shopweb</param-value>
+        <param-value>jdbc:mysql://localhost:3306/test1</param-value>
     </context-param>
 
     <context-param>
@@ -96,7 +96,6 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-
 
 
 </web-app>

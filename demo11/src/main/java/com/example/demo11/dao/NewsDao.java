@@ -22,7 +22,7 @@ public class NewsDao {
 
     public List<News> getAllNew() {
         List<News> list = new ArrayList<>();
-        String query = "select * from news ORDER BY newid DESC  LIMIT 4";
+        String query = "select * from news";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -71,42 +71,6 @@ public class NewsDao {
         }
         return list;
     }
-    public List<News> getNewTop1re() {
-        List<News> list = new ArrayList<>();
-        String query = "SELECT * FROM news where type=0 ORDER BY newid DESC  LIMIT 1";
-        try {
-            conn = new DBContext().getConnection();//mo ket noi voi sql
-            ps = conn.prepareStatement(query);
-
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new News(rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4)));
-            }
-        } catch (Exception e) {
-        }
-        return list;
-    }
-    public List<News> getNewTop23re() {
-        List<News> list = new ArrayList<>();
-        String query = "with x as (select *, ROW_NUMBER() over (order by newid desc) as r from news  where type=0) select * from x where r between 2 and 3";
-        try {
-            conn = new DBContext().getConnection();//mo ket noi voi sql
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new News(rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4)));
-            }
-        } catch (Exception e) {
-        }
-        return list;
-    }
-
 
 
 

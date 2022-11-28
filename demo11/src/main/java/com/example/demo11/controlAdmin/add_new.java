@@ -1,7 +1,6 @@
 package com.example.demo11.controlAdmin;
 
 import com.example.demo11.dao.NewsDao;
-import com.example.demo11.dao.ProductDao;
 import com.example.demo11.dao.TrademarkDao;
 
 import javax.servlet.*;
@@ -21,7 +20,6 @@ public class add_new extends HttpServlet {
         NewsDao dao = new NewsDao();
         dao.insertNew(tittle,derection,img);
         response.sendRedirect("Newadmin");
-
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
