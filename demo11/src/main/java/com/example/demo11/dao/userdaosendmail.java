@@ -17,7 +17,7 @@ public class userdaosendmail {
     PreparedStatement ps = null;
     ResultSet rs = null;
     public User getUser(String userid,String email) {
-        String query = "select * from test4 where username = ? and email=?";
+        String query = "select * from user where username = ? and email=?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -28,8 +28,8 @@ public class userdaosendmail {
                 return new User( rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getString(8),
-                        rs.getString(11)
+                        rs.getString(6),
+                        rs.getString(12)
                         );
             }
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class userdaosendmail {
         return null;
     }
     public void rePss( String username,String repss) {
-        String query = "UPDATE test4 SET repass = ? WHERE username = ?";
+        String query = "UPDATE user SET repss = ? WHERE username = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -49,7 +49,7 @@ public class userdaosendmail {
         }
     }
     public void doimk( String username,String doimk) {
-        String query = "UPDATE test4 SET password = ? WHERE username = ?";
+        String query = "UPDATE user SET password = ? WHERE username = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);

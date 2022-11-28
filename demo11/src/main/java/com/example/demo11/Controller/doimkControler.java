@@ -21,11 +21,19 @@ doPost(request, response);
 //        String email = request.getParameter("email");
         String userid = request.getParameter("userid");
         String pss = request.getParameter("pass");
+        String repss = request.getParameter("repass");
         userdaosendmail userDao = new userdaosendmail();
 //        User user =userDao.getUser(userid,email);
       String s =userDao.hashPassword(pss);
-        userDao.doimk(userid,s);
-        response.sendRedirect("login.jsp");
+      if(!repss.equals(pss)){
+          request.setAttribute("messerror","Pass and Repass mismatched !");
+          request.getRequestDispatcher("formfor.jsp").forward(request,response);
+      }else {
+          userDao.doimk(userid,s);
+          response.sendRedirect("login.jsp");
+      }
+
+
 
     }
 }

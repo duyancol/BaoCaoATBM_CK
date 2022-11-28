@@ -47,7 +47,7 @@ throw e;
 }
     }
     public static void main(String[] args) throws Exception {
-Email email = new Email("nguyenduy.30719@gmail.com","nguyenduy.30719@gmail.com","taclwrloeawzgafv","dfsfd");
+Email email = new Email("nguyenduy.30719@gmail.com","nguyenduy.30719@gmail.com","hwtuiyfvalxmlzxg","dfsfd");
 
 send(email);
 

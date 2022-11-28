@@ -7,7 +7,7 @@ public class DBContext {
     public Connection getConnection()throws Exception {
 
         if(instance == null || instance.trim().isEmpty())
-           url = "jdbc:mysql://localhost:3306/test1";
+           url = "jdbc:mysql://localhost:3306/shopweb";
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(url, userID, password);
     }

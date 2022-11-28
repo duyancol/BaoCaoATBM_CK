@@ -9,9 +9,9 @@ import org.jdbi.v3.core.Jdbi;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+//import java.sql.ResultSet;
+//import java.sql.SQLException;
+//import java.sql.Statement;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +31,7 @@ public class UserDao {
 //    if(statement==null) return false;
 //    String sql ="SELECT * FROM test2 WHERE username ='"+ username +"'AND password ='"+ password +"'";
  List<User> users= JDBIConnector.get().withHandle(h->
-            h.createQuery("SELECT * FROM test4 WHERE username =? ").bind(0,username)
+            h.createQuery("SELECT * FROM user WHERE username =? ").bind(0,username)
                     .mapToBean(User.class).stream().collect(Collectors.toList())
         );
  if(users.size()!=1) return null;
@@ -69,7 +69,7 @@ public class UserDao {
 //    if(statement==null) return false;
 //    String sql ="SELECT * FROM test2 WHERE username ='"+ username +"'AND password ='"+ password +"'";
         List<User> users= JDBIConnector.get().withHandle(h->
-                h.createQuery("SELECT * FROM test4 WHERE username =? ").bind(0,username)
+                h.createQuery("SELECT * FROM user WHERE username =? ").bind(0,username)
                         .mapToBean(User.class).stream().collect(Collectors.toList())
         );
         if(users.size()!=1) return null;
@@ -84,9 +84,11 @@ public class UserDao {
 
     public boolean register(String username, String password, String email, String phone) {
        int i= JDBIConnector.get().withHandle(h->
-                h.createUpdate("INSERT INTO test4(username,password) VALUES (?,?)")
+                h.createUpdate("INSERT INTO user(username,password,email,phone,role,hide) VALUES (?,?,?,?,0,0)")
                         .bind(0,username)
                         .bind(1,hashPassword(password))
+                        .bind(2,email)
+                        .bind(3,phone)
                         .execute()
 
         );
@@ -121,12 +123,13 @@ public class UserDao {
     }
     public List<User> getAllTpUser(){
         return   JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM `test4` ORDER BY hide DESC ").mapToBean(User.class).stream().collect(Collectors.toList());
+            return handle.createQuery("SELECT * FROM `user` where role =0 ORDER BY hide DESC  ").mapToBean(User.class).stream().collect(Collectors.toList());
         });
     }
 
     public static void main(String[] args) {
         int code = (int) Math.floor(((Math.random() * 899999) + 100000));
-        System.out.println(code);
+        UserDao userDao = new UserDao();
+        System.out.println(userDao.hashPassword("12345678"));
     }
 }

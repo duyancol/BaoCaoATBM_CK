@@ -28,6 +28,7 @@ doPost(request,response);
         Product list = dao.getProductByID(id);
         request.setAttribute("pd",list);
         List<danhmuc> list1 = DMService.getInstance().getAll();
+
         request.setAttribute("pdlistcc",list1);
         request.getRequestDispatcher("admin_web/editproduct.jsp").forward(request,response);
     }

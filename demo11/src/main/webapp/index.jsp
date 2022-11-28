@@ -169,10 +169,12 @@
 <div class="search_cake undisplay">
 
 <%--    <form action="SearchControl?index=1" method="post">--%>
-    <form action="SearchControl?index=1#drink-menu-section" method="post">
-        <input oninput="searchByName(this)" value="${txtSearch}" name="txtSearch"
-               type="text" id="search_cake_query" placeholder="Enter name of PROUCT !">
-        <input src="#drink-menu-section" class="searchBt" type="submit" name="btnGo" value="Go">
+    <form action="SearchAjaxProduct" method="post">
+<%--        <input oninput="searchByName(this)" value="${txtSearch}" name="txtSearch"--%>
+<%--               type="text" id="search_cake_query" placeholder="Enter name of PROUCT !">--%>
+    <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+
+    <input src="#drink-menu-section" class="searchBt" type="submit" name="btnGo" value="Go">
 
     </form>
 
@@ -230,7 +232,7 @@
     <div class="header--logo content-header">
         <div class="header--logo_large">
             <div class="header--logo_item">
-                <a href="lienhe.html">
+                <a href="userseenOrder">
 
                     <i class='bx bx-notepad' style="font-size: 40px;color: rgb(68, 67, 67);"></i>
                 </a>
@@ -390,33 +392,51 @@
                                     <a href="#">Categogy</a>
                                     <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
                                     <ul class="htmlCss-sub-menu sub-menu">
-                                        <c:forEach items="${pdlistcc}" var="cate">
-                                            <li><a href="#">${cate.namecategogy}</a></li>
+                                       <c:forEach items="${pdlistcc}" var="cate">
+                                            <li><a href="ADMIN-P?idcategogy=${cate.idcategogy}">${cate.namecategogy}</a></li>
 
                                         </c:forEach>
                                         <li class="more">
-                <span><a href="#">More</a>
-                <i class='bx bxs-chevron-right arrow more-arrow'></i>
-              </span>
+
 
 
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Nhan hieu</a>
+                                    <a href="#">Trademark</a>
                                     <i class='bx bxs-chevron-down js-arrow arrow '></i>
-                                    <ul class="js-sub-menu sub-menu">
-<c:forEach items="${listTra}" var="t">
-                                        <li><a href="#">${t.nametrademark}</a></li>
+                                    <ul class="js-sub-menu sub-menu" style="width: 400%">
+ts<c:forEach items="${listTra}" var="t">
+                                        <li style="border-bottom: #939091 solid 1px;">
+                                            <a href="ListCateGory?nametrademark=${t.nametrademark}">
+                                                <img src="${t.imgtrademark}" style="width: 60px;height: 50px"> ${t.nametrademark}
+                                            </a>
+                                        </li>
 </c:forEach>
                                     </ul>
                                 </li>
                                 <li><a href="ProductServlet">Shop</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="Newsdetail.jsp">Tin tuc</a></li>
-                                <li><a href="#">Cong thuc pha che</a></li>
-                                <li><a href="#">Lien he</a></li>
+<%--                                <li><a href="#">About</a>--%>
+
+
+<%--                                        <li style="border-bottom: #939091 solid 1px;"><a href="#">Tin tuc</a></li>--%>
+<%--                                        <li style="border-bottom: #939091 solid 1px;"><a href="#">Cong thuc pha che</a></li>--%>
+
+<%--                                </li>--%>
+<%--                                <li><a href="Newsdetail.jsp">Tin tuc</a></li>--%>
+<%--                                <li><a href="#">Cong thuc pha che</a></li>--%>
+                                <li>
+                                    <a href="#">About</a>
+                                    <i class='bx bxs-chevron-down js-arrow arrow '></i>
+                                    <ul class="js-sub-menu sub-menu" style="width: 400%">
+
+                                        <li style="border-bottom: #939091 solid 1px;"><a href="renew">  Recipe recipe</a></li>
+                                        <li style="border-bottom: #939091 solid 1px;"><a href="newdetail">  News</a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
                         <div class="search-box">
@@ -542,7 +562,7 @@
 
 
         <div class="footer_container">
-            <c:forEach items="${listTra}" var="t">
+          <c:forEach items="${listTra}" var="t">
                 <img src="${t.imgtrademark}" class="image_medal">
             </c:forEach>
 
@@ -637,14 +657,11 @@
                 </div>
             </div>
 
-                <%--                                <input type="number" name="soluong" min="1" max="10" value="1" style="border-radius: 5px;width: 40px;">--%>
 
-
-
-                <%--                        <a href="cart-add1?id=${p.id}"><button>Xem</button></a>--%>
             <button onclick="themvaogiohang(this)"
             ><a href="PDDetailsServlet?id=${o.id}"  style="text-decoration: none"><i class="fas fa-eye"></i></a></button>
             <a href="cart-add1?id=${o.id}" style="text-decoration: none"><button><i class="fas fa-cart-plus"></i></button></a>
+
 
         </div>
 
@@ -690,8 +707,18 @@
                                 </div>
 
                                 <button onclick="themvaogiohang(this)"
-                                ><a onclick="" href="PDDetailsServlet?id=${p.id}" style="text-decoration: none"><i class="fas fa-eye"></i></a></button>
-                                <a  href="cart-add1?id=${p.id}#drink-menu-section" style="text-decoration: none"><button><i class="fas fa-cart-plus" ></i></button></a>
+                                ><a onclick="" href="PDDetailsServlet?id=${p.id}" style="text-decoration: none"><i class="fas fa-eye"></i>
+                                </a>
+                                </button>
+                                <c:if test="${p.quantity==0.0}">
+                                    <button style="background: #9a9898">Out of stock
+                                    </button>
+                                </c:if>
+                                <c:if test="${p.quantity>0.0}">
+                                    <a  href="cart-add1?id=${p.id}#drink-menu-section" style="text-decoration: none"><button><i class="fas fa-cart-plus" ></i>
+                                    </button></a>
+                                </c:if>
+
 
 
                             </div>
@@ -1025,6 +1052,10 @@
         </footer>
     </section>
 </container>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
@@ -1058,45 +1089,45 @@
             }
         });
     }
-    function getBinhLuan(id) {
-
-        var amount = document.getElementsByClassName("product").length;
-
-
-           alert(id)
-
-        $.ajax({
-            url: "/demo11/Comment",
-            type: "get", //send it through get method
-            data: {
-                exits: id
-            },
-            // success: function (data) {
-            //     var row = document.getElementById("content");
-            //     row.innerHTML += data;
-            // },
-            error: function (xhr) {
-                //Do Something to handle error
-            }
-        });
-    }
-    function searchByName(param){
-        var txtSearch = param.value;
-        $.ajax({
-            url: "/demo11/SearchAjax",
-            type: "get", //send it through get method
-            data: {
-                txt: txtSearch
-            },
-            success: function (data) {
-                var row = document.getElementById("content");
-                row.innerHTML = data;
-            },
-            error: function (xhr) {
-                //Do Something to handle error
-            }
-        });
-    }
+    // function getBinhLuan(id) {
+    //
+    //     var amount = document.getElementsByClassName("product").length;
+    //
+    //
+    //        alert(id)
+    //
+    //     $.ajax({
+    //         url: "/demo11/Comment",
+    //         type: "get", //send it through get method
+    //         data: {
+    //             exits: id
+    //         },
+    //         // success: function (data) {
+    //         //     var row = document.getElementById("content");
+    //         //     row.innerHTML += data;
+    //         // },
+    //         error: function (xhr) {
+    //             //Do Something to handle error
+    //         }
+    //     });
+    // }
+    // function searchByName(param){
+    //     var txtSearch = param.value;
+    //     $.ajax({
+    //         url: "/demo11/SearchAjaxProduct",
+    //         type: "get", //send it through get method
+    //         data: {
+    //             txt: txtSearch
+    //         },
+    //         success: function (data) {
+    //             var row = document.getElementById("content");
+    //             row.innerHTML = data;
+    //         },
+    //         error: function (xhr) {
+    //             //Do Something to handle error
+    //         }
+    //     });
+    // }
 
     // search-box open close js code
     let navbar = document.querySelector(".navbar");

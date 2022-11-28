@@ -21,6 +21,11 @@ public class ProductDao {
             return handle.createQuery("select * from product").mapToBean(Product.class).stream().collect(Collectors.toList());
         });
     }
+    public List<Product> getNameTrademark(String name){
+        return   JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select * from product where trademark=?").bind(0,name).mapToBean(Product.class).stream().collect(Collectors.toList());
+        });
+    }
     public List<Product> get8Product(){
         return   JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("select * from product LIMIT 4").mapToBean(Product.class).stream().collect(Collectors.toList());
@@ -29,6 +34,12 @@ public class ProductDao {
     public List<Product> get8nextProduct(int amont){
         return   JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT * FROM product LIMIT 4 OFFSET ? ").bind(0,amont).mapToBean(Product.class).stream().collect(Collectors.toList());
+        });
+    }
+
+    public List<Product> searchProduct(String texxt){
+        return   JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select * from product where name like ?").bind(0,"%"+texxt+"%").mapToBean(Product.class).stream().collect(Collectors.toList());
         });
     }
 
@@ -61,6 +72,7 @@ public class ProductDao {
             return handle.createQuery("select * from product where id=?").bind(0,id).mapToBean(Product.class).first();
         });
     }
+
     public Product getByIDP(String id){
 
         return   JDBIConnector.get().withHandle(handle -> {
@@ -73,7 +85,7 @@ public class ProductDao {
 
     public static void main(String[] args) {
         ProductDao productDao = new ProductDao();
-        int list =productDao.getAll().size();
+        int list =productDao.getNameTrademark("Johnnie-Walker").size();
 
             System.out.println(list);
 

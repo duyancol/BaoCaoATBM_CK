@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title>Title</title>
@@ -68,7 +72,7 @@
             </div>
 
             <div class = "product-price">
-                <p class = "last-price">Old Price: <span>${details.price}$</span></p>
+                <p class = "last-price">Old Price: <span>${details.price}$  </span></p>
                 <p class = "new-price">New Price: <span>${details.price-(details.price*details.saleprice/100)}$(${details.saleprice}%)</span></p>
             </div>
 
@@ -87,9 +91,22 @@
 
             <div class = "purchase-info">
                 <input type = "number" min = "0" value = "1">
-                <a href="cart-add?id=${details.id}"><button type = "button" class = "btn">
-                    Add to Cart <i class = "fas fa-shopping-cart"></i>
-                </button></a>
+                <c:if test="${details.quantity==0.0}">
+                    <button type = "button" class = "btn" style="background: #9a9898">
+                        The product is out of stock <i class = "fas fa-shopping-cart"></i>
+                    </button>
+                </c:if>
+                <c:if test="${details.quantity>0.0}">
+                    <a href="cart-add?id=${details.id}">
+
+
+
+                        <button type = "button" class = "btn">
+                            Add to Cart <i class = "fas fa-shopping-cart"></i>
+                        </button>
+                    </a>
+                </c:if>
+
                 <button type = "button" class = "btn">Compare</button>
             </div>
 
@@ -301,6 +318,8 @@ var t=2;
     }
 
     function recomment(id){
+
+        alert(id);
         var xhttp;
         var username =document.reform.reusername.value;
         var content=document.reform.recontent.value;

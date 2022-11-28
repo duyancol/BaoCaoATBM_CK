@@ -2,6 +2,10 @@
   <library name="Maven: com.github.ben-manes.caffeine:caffeine:3.0.3">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/github/ben-manes/caffeine/caffeine/3.0.3/caffeine-3.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Lib/bcmail-jdk14-138.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Lib/bcprov-jdk14-138.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Lib/bctsp-jdk14-1.38.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Lib/itext-2.1.7.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/com/github/ben-manes/caffeine/caffeine/3.0.3/caffeine-3.0.3-javadoc.jar!/" />

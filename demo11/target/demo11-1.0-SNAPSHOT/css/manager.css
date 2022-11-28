@@ -194,6 +194,7 @@ table.table .avatar {
 }
 .modal .modal-content {
     border-radius: 3px;
+    width: 600px;
 }
 .modal .modal-footer {
     background: #ecf0f1;

@@ -39,7 +39,8 @@ String userid = request.getParameter("userid");
     User user =userDao.getUser(userid,email);
     request.setAttribute("list",user);
     if(user==null){
-        request.setAttribute("eror"," k thy");
+        request.setAttribute("messnot","Username or Email mismatched !");
+        request.getRequestDispatcher("formfor.jsp#repass1").forward(request,response);
 
     }else {
         int code = (int) Math.floor(((Math.random() * 899999) + 100000));
@@ -55,7 +56,8 @@ String userid = request.getParameter("userid");
         email1.setContent(codere);
        EmailUntilt.send(email1);
        userDao.rePss(userid,codere);
-        request.setAttribute("mes","dv gui");
+        request.setAttribute("mess","Activation code sent !");
+       request.getRequestDispatcher("formfor.jsp#repass2").forward(request,response);
 
 
 
@@ -63,7 +65,7 @@ String userid = request.getParameter("userid");
 }catch (Exception e){
     e.printStackTrace();
 }
-request.getRequestDispatcher("formfor.jsp").forward(request,response);
+
 //        response.sendRedirect("Load8product");
 
 

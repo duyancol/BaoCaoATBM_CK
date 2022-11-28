@@ -35,5 +35,8 @@ public class ReCommentDao {
         return i == 1;
     }
 
-
+    public static void main(String[] args) {
+        ReCommentDao reCommentDao = new ReCommentDao();
+        System.out.println(reCommentDao.getRequestdentailComment("4"));
+    }
 }

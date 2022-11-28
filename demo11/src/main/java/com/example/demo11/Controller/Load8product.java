@@ -26,19 +26,20 @@ doPost(request,response);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> list = PDSevice.getInstance().get8product();
         request.setAttribute("load8sp",list);
-        TrademarkDao dao = new TrademarkDao();
-        List<Trademark> list1 = dao.getAllProduct();
-        request.setAttribute("listTra",list1);
-        List<danhmuc> listcate = DMService.getInstance().getAll();
-        request.setAttribute("pdlistcc",listcate);
-        NewsDao daonew = new NewsDao();
-        List<News> listn = daonew.getAllNew();
-        request.setAttribute("listnew",listn);
-        List<News> listtop1 = daonew.getNewTop1();
-        request.setAttribute("listnewtop1",listtop1);
+//        TrademarkDao dao = new TrademarkDao();
+//        List<Trademark> list1 = dao.getAllProduct();
+//        request.setAttribute("listTra",list1);
+//        List<danhmuc> listcate = DMService.getInstance().getAll();
+//        request.setAttribute("pdlistcc",listcate);
+//        NewsDao daonew = new NewsDao();
+//        List<News> listn = daonew.getAllNew();
+//        request.setAttribute("listnew",listn);
+//        List<News> listtop1 = daonew.getNewTop1();
+//        request.setAttribute("listnewtop1",listtop1);
+//
+//        List<News> listtop23 = daonew.getNewTop23();
+//        request.setAttribute("listnewtop23",listtop23);
 
-        List<News> listtop23 = daonew.getNewTop23();
-        request.setAttribute("listnewtop23",listtop23);
 
 //        NewsDao daonew = new NewsDao();
 //        List<News> listnew = daonew.getAllNew();

@@ -21,7 +21,7 @@ doPost(request,response);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            String txtSearch = request.getParameter("txtSearch");
+            String txtSearch = request.getParameter("txt");
             int count = PDSevice.getInstance().count(txtSearch).size();
             String indexString= request.getParameter("index");
             int index =Integer.parseInt(indexString);

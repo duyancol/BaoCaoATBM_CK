@@ -18,11 +18,8 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String idcategogy =request.getParameter("idcategogy");
-//        List<Product> list1=PDSevice.getInstance().getPDMSP(id);
         List<Product> list =PDSevice.getInstance().getAll();
         request.setAttribute("pdlist",list);
-//request.getRequestDispatcher("DMServlet").forward(request,response);
         request.getRequestDispatcher("DMServlet").forward(request,response);
     }
 }

@@ -59,7 +59,25 @@
                 <hr />
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Receipient's username" aria-describely="basic-addon2">
+<%--                    <form action="SearchAjaxProduct" method="post">--%>
+<%--                        <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" class="form-control" >--%>
+<%--&lt;%&ndash;                        <input oninput="searchByName(this)" value="${txtSearch}" name="txtSearch"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                               type="text" id="search_cake_query" placeholder="Enter name of PROUCT !">&ndash;%&gt;--%>
+<%--                        <input src="#drink-menu-section" class="searchBt" type="submit" name="btnGo" value="Go">--%>
+
+<%--                    </form>--%>
+    <form action="SearchAjaxProduct" method="post" class="form-inline my-2 my-lg-0">
+        <div class="input-group input-group-sm">
+            <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-secondary btn-number">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+    </form>
+
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
                     </div>
@@ -102,7 +120,7 @@
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
 
-                <div class="row">
+                <div class="row" id="content">
 <c:forEach items="${pdlist}" var="p">
                     <div class="col-sm-3 col-md-6 col-lg-4">
                         <div class="card">
@@ -111,7 +129,7 @@
                                 <h5 class="card-title"><b>Accessory</b></h5>
                                 <p class="card-text small">${p.name}</p>
                                 <p class="tags">${p.price}</p>
-                                <a href="https://api.whatsapp.com/send?phone=2348162667912" target="_blank" class="btn btn-success button-text"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+                                <a href="cart-add?id=${p.id}"  class="btn btn-success button-text"><i class="fa fa-shopping-cart" ></i> Add to cart</a>
                             </div>
                         </div>
                     </div>
@@ -130,7 +148,7 @@
         </div>
     </div>
 </section>
-
+<button style="margin-top: 10%;border-radius: 10px;padding: 20px;background: #272d40;color: #f0f0f0" onclick="Loadmore()">Load</button>
 
 <div>&nbsp;</div>
 <div>&nbsp;</div>
@@ -146,7 +164,42 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function Loadmore() {
+        var amount = document.getElementsByClassName("product").length;
+        $.ajax({
+            url: "/demo11/Load4nextSP",
+            type: "get", //send it through get method
+            data: {
+                exits: amount
+            },
+            success: function (data) {
+                var row = document.getElementById("content");
+                row.innerHTML += data;
+            },
+            error: function (xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
+    function searchByName(param){
+        var txtSearch = param.value;
+        $.ajax({
+            url: "/demo11/SearchAjaxProduct",
+            type: "get", //send it through get method
+            data: {
+                txt: txtSearch
+            },
+            success: function (data) {
+                var row = document.getElementById("content");
+                row.innerHTML = data;
+            },
+            error: function (xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
+</script>
 </body>
 </html>

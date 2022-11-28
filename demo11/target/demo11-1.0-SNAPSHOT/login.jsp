@@ -104,9 +104,14 @@
 
 
 
-            <div class="text-center">
+            <div class="text-center" style="margin: 20px;">
                 <a href="register.jsp" class="txt2 hov1">
                     Sign Up
+                </a>
+            </div>
+            <div class="text-center" style="margin: 20px;">
+                <a href="forestcontrol" class="txt2 hov1" style="color:#0048ff">
+                    Forgot password
                 </a>
             </div>
         </form>

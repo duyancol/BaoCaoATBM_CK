@@ -5,6 +5,9 @@
   Time: 4:04 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    String error = (String) request.getAttribute("error");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
@@ -43,6 +46,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="Editproductdetail" method="post">
+                    <%
+                        if (error != null) {
+                    %>
+                    <div style="color: red;font-size: 16px" >
+                        <%=error%>
+                    </div>
+                    <%
+
+                        }
+                    %>
+
                     <div class="modal-header">
                         <h4 class="modal-title">Edit Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -58,7 +72,7 @@
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input name="price" type="text" class="form-control" required value="${pd.price}" >
+                            <input name="price" type="number" class="form-control" required value="${pd.price}" >
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>

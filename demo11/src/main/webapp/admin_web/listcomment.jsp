@@ -47,7 +47,7 @@
             </a>
         </li>
         <li>
-            <a href="rest">
+            <a href="Servlet3">
                 <i class='bx bx-box' ></i>
                 <span class="links_name">Product</span>
             </a>
@@ -59,7 +59,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="tktn">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Analytics</span>
             </a>
@@ -119,7 +119,7 @@
             <i class='bx bx-search' ></i>
         </div>
         <div class="profile-details">
-            <img src="images/profile.jpg" alt="">
+            <img src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=255&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7" alt="">
             <span class="admin_name">Prem Shahi</span>
             <i class='bx bx-chevron-down' ></i>
         </div>

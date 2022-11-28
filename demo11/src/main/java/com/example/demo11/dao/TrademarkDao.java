@@ -2,11 +2,13 @@ package com.example.demo11.dao;
 
 import com.example.demo11.db.DBContext;
 import com.example.demo11.db.JDBIConnector;
+import com.example.demo11.model.Product;
 import com.example.demo11.model.Trademark;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,8 +16,19 @@ public class TrademarkDao {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    private static TrademarkDao instance;
+    public static TrademarkDao getInstance(){
+        if(instance == null){
+            instance = new TrademarkDao();
+        }
+        return instance;
+    }
+    public Trademark getByName(String name){
 
-
+        return   JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select * from trademark where nametrademark=?").bind(0,name).mapToBean(Trademark.class).first();
+        });
+    }
     public void delete(String id){
            JDBIConnector.get().withHandle(handle -> {
                return handle.createQuery("DELETE FROM trademark where idtrademark =?").bind(0,id).mapToBean(Trademark.class).first();
