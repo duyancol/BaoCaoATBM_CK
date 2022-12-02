@@ -26,18 +26,18 @@ import javax.xml.transform.stream.StreamSource;
 //import org.apache.fop.messaging.MessageHandler;
 import org.xml.sax.InputSource;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Image;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfEncryptor;
-import com.lowagie.text.pdf.PdfImage;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfSignatureAppearance;
-import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfWriter;
+//import com.lowagie.text.DocumentException;
+//import com.lowagie.text.Element;
+//import com.lowagie.text.Image;
+//import com.lowagie.text.Rectangle;
+//import com.lowagie.text.pdf.BaseFont;
+//import com.lowagie.text.pdf.PdfContentByte;
+//import com.lowagie.text.pdf.PdfEncryptor;
+//import com.lowagie.text.pdf.PdfImage;
+//import com.lowagie.text.pdf.PdfReader;
+//import com.lowagie.text.pdf.PdfSignatureAppearance;
+//import com.lowagie.text.pdf.PdfStamper;
+//import com.lowagie.text.pdf.PdfWriter;
 
 public class KyFilePDF {
     private String passwordKeystore="123456";
@@ -56,41 +56,41 @@ public class KyFilePDF {
         fis.close();
         fos.close();
     }
-    private void signDocument(String pdfFileName) {
-        try {
-            // Object tmpDir;
-            // 1. copy
-            File tmpPDFFile = new File("F:\\atbm-12.pdf");
-            copyFile(new File(pdfFileName), tmpPDFFile);
-            // 2. sign
-            KeyStore ks = KeyStore.getInstance("JKS");
-//            enumeration = ks.aliases();
-//            alias = enumeration.nextElement();
-            FileInputStream fis = new FileInputStream(keystore);
-            ks.load(fis, passwordKeystore.toCharArray());
-            PrivateKey key = (PrivateKey) ks.getKey(tr, passwordKeystore.toCharArray());
-            Certificate[] chain = ks.getCertificateChain(tr);
-            PdfReader reader = new PdfReader(tmpPDFFile.getAbsolutePath());
-            FileOutputStream fout = new FileOutputStream("F://c.pdf");
-            PdfStamper stp = PdfStamper.createSignature(reader, fout, '\0');
-            PdfSignatureAppearance sap = stp.getSignatureAppearance();
-            System.out.println(key);
-            sap.setCrypto(key, chain, null, PdfSignatureAppearance.WINCER_SIGNED);
-
-            //sap.setImage(new
-            sap.setVisibleSignature(new Rectangle(360, 730, 550, 0), 2, null);
-
-
-            stp.close();
-            fis.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void signDocument(String pdfFileName) {
+//        try {
+//            // Object tmpDir;
+//            // 1. copy
+//            File tmpPDFFile = new File("F:\\atbm-12.pdf");
+//            copyFile(new File(pdfFileName), tmpPDFFile);
+//            // 2. sign
+//            KeyStore ks = KeyStore.getInstance("JKS");
+////            enumeration = ks.aliases();
+////            alias = enumeration.nextElement();
+//            FileInputStream fis = new FileInputStream(keystore);
+//            ks.load(fis, passwordKeystore.toCharArray());
+//            PrivateKey key = (PrivateKey) ks.getKey(tr, passwordKeystore.toCharArray());
+//            Certificate[] chain = ks.getCertificateChain(tr);
+//            PdfReader reader = new PdfReader(tmpPDFFile.getAbsolutePath());
+//            FileOutputStream fout = new FileOutputStream("F://c.pdf");
+//            PdfStamper stp = PdfStamper.createSignature(reader, fout, '\0');
+//            PdfSignatureAppearance sap = stp.getSignatureAppearance();
+//            System.out.println(key);
+//            sap.setCrypto(key, chain, null, PdfSignatureAppearance.WINCER_SIGNED);
+//
+//            //sap.setImage(new
+//            sap.setVisibleSignature(new Rectangle(360, 730, 550, 0), 2, null);
+//
+//
+//            stp.close();
+//            fis.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public static void main(String[] args) throws IOException {
         KyFilePDF d = new KyFilePDF();
-        d.signDocument("F://at.pdf");
+ //       d.signDocument("F://at.pdf");
 //	System.out.println("s");
 //	  File fis = new File("F://at.pdf");
 //      File fos = new File("F://at1.pdf");
