@@ -40,6 +40,7 @@ public class insertProductAD extends HttpServlet {
         String img3 = request.getParameter("img3");
 
         Part part = request.getPart("file2");
+
         String realPass = request.getServletContext().getRealPath("/assets");
         String filename = Path.of(part.getSubmittedFileName()).getFileName().toString();
         if (!Files.exists(Path.of(realPass))) {

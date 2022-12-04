@@ -26,8 +26,8 @@ doPost(request,response);
         String adress = request.getParameter("adress");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
-        String product = request.getParameter("listproduct");
-        String user = request.getParameter("user");
+        String product = request.getParameter("listoder");
+        String user = request.getParameter("username");
 
 
         HttpSession  session =request.getSession();

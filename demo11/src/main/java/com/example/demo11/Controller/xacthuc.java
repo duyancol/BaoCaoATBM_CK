@@ -14,10 +14,21 @@ doPost(request,response);
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String adress = request.getParameter("adress");
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String username = request.getParameter("user");
         String phone = request.getParameter("phone");
+        String adress = request.getParameter("adress");
+        String email = request.getParameter("email");
+        String listoder = request.getParameter("listproduct");
 
-        request.setAttribute("error", adress);
+
+        request.setAttribute("adress", adress);
+        request.setAttribute("username", username);
+        request.setAttribute("phone", phone);
+        request.setAttribute("email", email);
+        request.setAttribute("listoder", listoder);
+
         request.getRequestDispatcher("xacthuc.jsp").forward(request,response);
     }
 }
