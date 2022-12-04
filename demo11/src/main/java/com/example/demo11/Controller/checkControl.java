@@ -48,9 +48,6 @@ if(result){
     email1.setTo(email);
     email1.setSubject("The order you have placed :");
     StringBuilder sb= new StringBuilder();
-//    sb.append("Cảm ơn bạn đã ủng hộ shop của chúng tôi. "+"\n\t"+"Danh sách đơn hàng bạn đã đặt : "+"\n\t"+user+"_"+adress+"_"+product).append("</b>");
-//      email1.setContent("Cảm ơn bạn đã ủng hộ shop của chúng tôi. "+"\n\t"+"\n\t"+user+"_"+adress+"_"+"" +
-//              " Danh sách đơn hàng bạn đã đặt : "+"\n\t"+product);
       sb.append("Cảm ơn bạn đã ủng hộ shop của chúng tôi").append("<br>");
       sb.append("Thông tin hóa đơn :").append("<br>");
       sb.append("-" + "  "+"Tên khách hàng : "+user).append("<br>");
