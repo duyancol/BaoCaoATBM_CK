@@ -258,7 +258,7 @@
 <%--                                                <input name="img" type="text" class="form-control"  required>--%>
 
 <%--                                                    <form action="UploadControl" method="post" enctype="multipart/form-data">--%>
-                                                        Image : <input type="file" name="file2" placeholder="Image" required>
+                                                        Image path : <input type="file" name="file2" placeholder="Image" required>
 
 
 <%--                                                    </form>--%>

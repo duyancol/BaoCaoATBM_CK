@@ -25,7 +25,7 @@ public class XuathoadonPDF {
 
         try {
             // khởi tạo một PdfWriter truyền vào document và FileOutputStream
-            PdfWriter.getInstance(document, new FileOutputStream("F:\\HelloWorld.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("E:/2.pdf"));
 
             // mở file để thực hiện viết
             document.open();
@@ -54,7 +54,7 @@ public class XuathoadonPDF {
             headeremail.setAlignment(Element.ALIGN_LEFT);
             headeremail.setIndentationLeft(80);
             document.add(headeremail);
-            Image image1 = Image.getInstance("F:\\atbm12345.jpg");
+            Image image1 = Image.getInstance("36.jpg");
 
 
             image1.scalePercent(10f);

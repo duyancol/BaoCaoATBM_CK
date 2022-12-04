@@ -159,12 +159,16 @@
         <div class="dialog-body">
             <a class="dialog-close-btn" href="#">&times;</a>
             <div class="modal-content">
-                                    <form action="checkControl" method="post">
+                                    <form action="xacthuc" method="post">
                                         <div class="modal-header">
                                             <h4 class="modal-title">Add Product</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
+                                            <div class="form-group" >
+                                                <label>User name</label>
+                                                <input name="user" type="text" class="form-control" value="${auth.username}" required>
+                                            </div>
                                             <div class="form-group">
                                                 <label>Email</label>
                                                 <input name="email" type="text" class="form-control" value="${auth.email}" required>
@@ -185,20 +189,14 @@
 
                                                 <div >
                                                         ${product.name}      / price: ${product.price} /quantity: ${product.quantitySol}
-
-
-
-
                                                 </div>
+
                                             </c:forEach>
                                             <div class="form-group" style="display: none">
                                                 <label></label>
                                                 <input name="listproduct" type="text" class="form-control" value="${products}" required>
                                             </div>
-                                            <div class="form-group" >
-                                                <label></label>
-                                                <input name="user" type="text" class="form-control" value="${auth.username}" required>
-                                            </div>
+
                                             <div>
                                                 Total:
                                                 <div class="total-cart" >
