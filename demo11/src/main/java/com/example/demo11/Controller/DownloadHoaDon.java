@@ -131,6 +131,7 @@ doPost(request,response);
                 int[] b = {1, 5,2,1,1};
                 table.setWidths(b);
                 //Khởi tạo 3 ô header
+
                 PdfPCell header1 = new PdfPCell(new Paragraph("STT",font12_bold));
                 PdfPCell header2 = new PdfPCell(new Paragraph("Tên sản phẩm",font12_bold));
                 PdfPCell header3 = new PdfPCell(new Paragraph("Giá",font12_bold));
@@ -144,17 +145,141 @@ doPost(request,response);
                 table.addCell(header5);
 
                 //Khởi tạo 3 ô data: ô số 1 là string, ô số 2 là ảnh, ô số 3 là table
-                PdfPCell data1 = new PdfPCell(new Paragraph("1"));
-                PdfPCell data2 = new PdfPCell(new Paragraph(tensp,font12));
-                PdfPCell data3 = new PdfPCell(new Paragraph(gia + " $"));
-                PdfPCell data4 = new PdfPCell(new Paragraph(sl));
-                PdfPCell data5 = new PdfPCell(new Paragraph(gia+ " $"));
+                if(txt.length==3){
+                    int Tonggia=Integer.parseInt(gia)*Integer.parseInt(sl);
+                    PdfPCell data1 = new PdfPCell(new Paragraph("1"));
+                    PdfPCell data2 = new PdfPCell(new Paragraph(tensp,font12));
+                    PdfPCell data3 = new PdfPCell(new Paragraph(gia + " $"));
+                    PdfPCell data4 = new PdfPCell(new Paragraph(sl));
+                    PdfPCell data5 = new PdfPCell(new Paragraph(String.valueOf(Tonggia)+ " $"));
+                    table.addCell(data1);
+                    table.addCell(data2);
+                    table.addCell(data3);
+                    table.addCell(data4);
+                    table.addCell(data5);
 
-                PdfPCell data7 = new PdfPCell(new Paragraph("2"));
-                PdfPCell data8 = new PdfPCell(new Paragraph("Vang pháp"));
-                PdfPCell data9 = new PdfPCell(new Paragraph("120 $"));
-                PdfPCell data10 = new PdfPCell(new Paragraph("1"));
-                PdfPCell data11 = new PdfPCell(new Paragraph("120 $"));
+                    document.add(table);
+                    PdfPTable table2 = new PdfPTable(2);
+
+                    //Khởi tạo 3 ô header
+                    PdfPCell header6 = new PdfPCell(new Paragraph("Tổng tiền sản phẩm :",font12_bold));
+                    PdfPCell header7 = new PdfPCell(new Paragraph(String.valueOf(Tonggia)+ " $"));
+                    int[] c = {4, 1};
+                    table2.setWidths(c);;
+                    table2.addCell(header6);
+                    table2.addCell(header7);
+                    PdfPCell data18 = new PdfPCell(new Paragraph("Phí vận chuyển : ",font12_bold));
+                    PdfPCell data28 = new PdfPCell(new Paragraph("1 $"));
+                    table2.addCell(data18);
+                    table2.addCell(data28);
+                    PdfPCell data19 = new PdfPCell(new Paragraph("Tổng tiền thanh toán : ",font12_bold));
+                    PdfPCell data29 = new PdfPCell(new Paragraph(String.valueOf(Tonggia)+ " $",font12_bold_red));
+                    table2.addCell(data19);
+                    table2.addCell(data29);
+                    document.add(table2);
+                }else if(txt.length==6){
+                    PdfPCell data1 = new PdfPCell(new Paragraph("1"));
+                    PdfPCell data2 = new PdfPCell(new Paragraph(tensp,font12));
+                    PdfPCell data3 = new PdfPCell(new Paragraph(gia + " $"));
+                    PdfPCell data4 = new PdfPCell(new Paragraph(sl));
+                    PdfPCell data5 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(gia)*Integer.parseInt(sl))+ " $"));
+
+                    PdfPCell data7 = new PdfPCell(new Paragraph("2"));
+                    PdfPCell data8 = new PdfPCell(new Paragraph(txt[3],font12));
+                    PdfPCell data9 = new PdfPCell(new Paragraph(txt[4] + " $"));
+                    PdfPCell data10 = new PdfPCell(new Paragraph(txt[5]));
+                    PdfPCell data11 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(txt[4])*Integer.parseInt(txt[5]))+" $"));
+                    table.addCell(data1);
+                    table.addCell(data2);
+                    table.addCell(data3);
+                    table.addCell(data4);
+                    table.addCell(data5);
+
+                    table.addCell(data7);
+                    table.addCell(data8);
+                    table.addCell(data9);
+                    table.addCell(data10);
+                    table.addCell(data11);
+
+                    document.add(table);
+                    PdfPTable table2 = new PdfPTable(2);
+
+                    //Khởi tạo 3 ô header
+                    PdfPCell header6 = new PdfPCell(new Paragraph("Tổng tiền sản phẩm :",font12_bold));
+                    PdfPCell header7 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(txt[4])*Integer.parseInt(txt[5])+Integer.parseInt(txt[1])*Integer.parseInt(txt[2]))+ " $"));
+                    int[] c = {4, 1};
+                    table2.setWidths(c);;
+                    table2.addCell(header6);
+                    table2.addCell(header7);
+                    PdfPCell data18 = new PdfPCell(new Paragraph("Phí vận chuyển : ",font12_bold));
+                    PdfPCell data28 = new PdfPCell(new Paragraph("1 $"));
+                    table2.addCell(data18);
+                    table2.addCell(data28);
+                    PdfPCell data19 = new PdfPCell(new Paragraph("Tổng tiền thanh toán : ",font12_bold));
+                    PdfPCell data29 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(txt[4])*Integer.parseInt(txt[5])+Integer.parseInt(txt[1])*Integer.parseInt(txt[2])+1)+ " $",font12_bold_red));
+                    table2.addCell(data19);
+                    table2.addCell(data29);
+                    document.add(table2);
+                }
+                else if(txt.length==9){
+                    PdfPCell data1 = new PdfPCell(new Paragraph("1"));
+                    PdfPCell data2 = new PdfPCell(new Paragraph(tensp,font12));
+                    PdfPCell data3 = new PdfPCell(new Paragraph(gia + " $"));
+                    PdfPCell data4 = new PdfPCell(new Paragraph(sl));
+                    PdfPCell data5 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(gia)*Integer.parseInt(sl))+ " $"));
+
+                    PdfPCell data7 = new PdfPCell(new Paragraph("2"));
+                    PdfPCell data8 = new PdfPCell(new Paragraph(txt[3],font12));
+                    PdfPCell data9 = new PdfPCell(new Paragraph(txt[4] + " $"));
+                    PdfPCell data10 = new PdfPCell(new Paragraph(txt[5]));
+                    PdfPCell data11 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(txt[4])*Integer.parseInt(txt[5]))+" $"));
+
+                    PdfPCell data12 = new PdfPCell(new Paragraph("3"));
+                    PdfPCell data13 = new PdfPCell(new Paragraph(txt[6],font12));
+                    PdfPCell data14 = new PdfPCell(new Paragraph(txt[7] + " $"));
+                    PdfPCell data15 = new PdfPCell(new Paragraph(txt[8]));
+                    PdfPCell data16 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(txt[7])*Integer.parseInt(txt[8]))+" $"));
+                    table.addCell(data1);
+                    table.addCell(data2);
+                    table.addCell(data3);
+                    table.addCell(data4);
+                    table.addCell(data5);
+
+                    table.addCell(data7);
+                    table.addCell(data8);
+                    table.addCell(data9);
+                    table.addCell(data10);
+                    table.addCell(data11);
+
+                    table.addCell(data12);
+                    table.addCell(data13);
+                    table.addCell(data14);
+                    table.addCell(data15);
+                    table.addCell(data16);
+
+                    document.add(table);
+                    PdfPTable table2 = new PdfPTable(2);
+
+                    //Khởi tạo 3 ô header
+                    PdfPCell header6 = new PdfPCell(new Paragraph("Tổng tiền sản phẩm :",font12_bold));
+                    PdfPCell header7 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(txt[4])*Integer.parseInt(txt[5])+Integer.parseInt(txt[1])*Integer.parseInt(txt[2])+Integer.parseInt(txt[7])*Integer.parseInt(txt[8]))+ " $"));
+                    int[] c = {4, 1};
+                    table2.setWidths(c);;
+                    table2.addCell(header6);
+                    table2.addCell(header7);
+                    PdfPCell data18 = new PdfPCell(new Paragraph("Phí vận chuyển : ",font12_bold));
+                    PdfPCell data28 = new PdfPCell(new Paragraph("1 $"));
+                    table2.addCell(data18);
+                    table2.addCell(data28);
+                    PdfPCell data19 = new PdfPCell(new Paragraph("Tổng tiền thanh toán : ",font12_bold));
+                    PdfPCell data29 = new PdfPCell(new Paragraph(String.valueOf(Integer.parseInt(txt[4])*Integer.parseInt(txt[5])+Integer.parseInt(txt[1])*Integer.parseInt(txt[2])+Integer.parseInt(txt[7])*Integer.parseInt(txt[8])+1)+ " $",font12_bold_red));
+                    table2.addCell(data19);
+                    table2.addCell(data29);
+                    document.add(table2);
+                }
+
+
+
 
 
 
@@ -163,41 +288,15 @@ doPost(request,response);
 //            nestedTable.addCell(new Paragraph("Nested Cell 2"));
 
                 //Thêm data vào bảng.
-                table.addCell(data1);
-                table.addCell(data2);
-                table.addCell(data3);
-                table.addCell(data4);
-                table.addCell(data5);
-
-                table.addCell(data7);
-                table.addCell(data8);
-                table.addCell(data9);
-                table.addCell(data10);
-                table.addCell(data11);
 
 
 
 
 
-                document.add(table);
-                PdfPTable table2 = new PdfPTable(2);
 
-                //Khởi tạo 3 ô header
-                PdfPCell header6 = new PdfPCell(new Paragraph("Tổng tiền sản phẩm :",font12_bold));
-                PdfPCell header7 = new PdfPCell(new Paragraph("480 $"));
-                int[] c = {4, 1};
-                table2.setWidths(c);;
-                table2.addCell(header6);
-                table2.addCell(header7);
-                PdfPCell data18 = new PdfPCell(new Paragraph("Phí vận chuyển : ",font12_bold));
-                PdfPCell data28 = new PdfPCell(new Paragraph("1 $"));
-                table2.addCell(data18);
-                table2.addCell(data28);
-                PdfPCell data19 = new PdfPCell(new Paragraph("Tổng tiền thanh toán : ",font12_bold));
-                PdfPCell data29 = new PdfPCell(new Paragraph("481 $",font12_bold_red));
-                table2.addCell(data19);
-                table2.addCell(data29);
-                document.add(table2);
+
+
+
 
                 Paragraph paragraphNBHK = new Paragraph("Người mua hàng ký ",font16_bold);
                 Paragraph paragraphNBHKt = new Paragraph("(Ký, ghi rõ họ tên) ",font12_I);

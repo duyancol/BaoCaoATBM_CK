@@ -102,7 +102,7 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Edit <b>Product</b></h2>
+                    <h2> <b>Detail Oder</b></h2>
                 </div>
                 <div class="col-sm-6">
                 </div>
@@ -111,43 +111,85 @@
     </div>
     <div id="editEmployeeModal">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <form >
+            <div class="modal-content" style="width: 1110px;margin-left: -61%">
+                <form  >
 
                     <c:set var="auth" value="${sessionScope.auth}"/>
 
 
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Product</h4>
+                        <h4 class="modal-title">Detail Oder</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
+                    <c:set var="products" value="${cart123.totalName}"/>
+                    <c:set var="productst" value="${cart.productList}"/>
                     <div class="modal-body">
-                        <div class="form-group">
+                      <div style="display: flex;justify-content: center;padding: 20px">
+                          <h1> Information Oder</h1>
+                      </div>
+                        <table class="table" class="table-primary" style="border: solid 1px #0c0c0c;border-radius: 10px">
+                            <thead>
+                            <tr class="table-primary">
+                                <th scope="col">STT</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Total</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${productst}" var="product">
+
+
+                                <tr style="border-bottom:1px">
+                                    <th scope="row">1</th>
+                                    <td>${product.name} </td>
+                                    <td>${product.price}</td>
+                                    <td>${product.quantitySol}</td>
+                                    <td>${product.quantitySol * product.price}</td>
+                                </tr>
+                            </c:forEach>
+                            <tr>
+
+                                <td colspan="4" class="table-primary"> Total</td>
+                                <td>
+                                    <div class="total-cart" >
+
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                        <div style="display: flex;justify-content: center;padding-top: 30px">
+                            <h1>Customer information</h1>
+                        </div>
+                        <div class="form-group" style="padding: 10px">
                             <label>Tên khách hàng : <%=username%></label>
-                            <input name="username" type="text" class="form-control" required value=" <%=username%>">
+                            <input style="font-weight: bold;height: 40px;font-size: 16px" name="username" type="text" class="form-control" required value=" <%=username%>">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"  style="padding: 10px">
                             <label>Số điện thoại : </label>
-                            <input name="phone" type="text" class="form-control" required value="0377155498" >
+                            <input style="font-weight: bold;height: 40px;font-size: 16px" name="username" name="phone" type="text" class="form-control" required value="0377155498" >
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"  style="padding: 10px">
                             <label>Địa chỉ : <%=adress%></label>
-                            <input name="adress" type="text" class="form-control" required value="<%=adress%>" >
+                            <input style="font-weight: bold;height: 40px;font-size: 16px" name="username" name="adress" type="text" class="form-control" required value="<%=adress%>" >
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"  style="padding: 10px">
                             <label>Email : <%=email%></label>
-                            <input name="email" type="text" class="form-control" required value="<%=email%>" >
+                            <input style="font-weight: bold;height: 40px;font-size: 16px" name="username" name="email" type="text" class="form-control" required value="<%=email%>" >
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"  style="padding: 10px;display: none">
                             <label>Sản phẩm : <%=listoder%></label>
-                            <input name="listoder" type="text" class="form-control" required value="<%=listoder%>" style="display: none">
-                        </div>
-                        <label>Tổng số tiền : <div class="total-cart" >
-
-
+                            <input style="font-weight: bold;height: 40px;font-size: 16px" name="username" name="listoder" type="text" class="form-control" required value="<%=listoder%>" style="display: none">
                         </div>
 
-                        </label>$
+
+
 
 
 
@@ -156,7 +198,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <a href="#my-dialog" class="btn btn-dark rounded-pill py-2 btn-block"style="background: #65e865">Identity verification</a>
+                        <a href="#my-dialog" class="btn btn-dark rounded-pill py-2 btn-block"style="background: #65e865">Oder</a>
                     </div>
                 </form>
             </div>
@@ -182,7 +224,7 @@
                             <img src="assets/images.png"  style="margin-left: 45px">
                         <div class="modal-header">
 
-                            <h2 class="modal-title" style="justify-content: center">Bạn cần xác thực danh tính để đặt</h2>
+                            <h2 class="modal-title" style="justify-content: center">Bạn cần xác thực danh tính để Oder</h2>
                                 <br>
 
 <%--                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
@@ -212,7 +254,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success"  value="Continue">
+                        <input type="submit" style="background: #4CAF50" class="btn btn-success"  value="Continue">
                     </div>
                 </form>
             </div>

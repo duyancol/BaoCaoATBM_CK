@@ -173,7 +173,7 @@ public class AdOrder {
     public List<Order> getAllOrdertheomonth(String d) {
 
         List<Order> list = new ArrayList<>();
-        String query = "SELECT *,COUNT(product_id) AS total_tongsp FROM  `order` INNER JOIN order_detail ON  order_detail.order_id = `order`.id where created_at like ? GROUP BY product_id";
+        String query = "SELECT *,COUNT(product_id) AS total_tongsp FROM  `order` INNER JOIN order_detail ON  order_detail.order_id = `order`.id where create_at like ? GROUP BY product_id";
         String month = d.substring(0,d.indexOf("-"));
         String year=d.substring(d.indexOf("-")+1, d.length());
         try {
@@ -266,7 +266,7 @@ public class AdOrder {
 
 
 
-        System.out.println(dao.getAllOrderdetail("11").size());
+        System.out.println(dao.getAllOrdertheomonth("2022-11"));
     }
 
 }
