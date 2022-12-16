@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css" >
 </head>
 
-<%--<body>--%>
+<body>
 <%--<div class="paging">--%>
 <%--    <c:forEach begin="1" end="${end}" var="i">--%>
 <%--        <a href="#">${i}</a>--%>
@@ -70,7 +70,9 @@
 
 <%--</div>--%>
 
+<div style="background: whitesmoke ;margin-left: 70%;width: 900px ;position: sticky ;top: 120px;z-index: 10000" id="show">
 
+</div>
 <div class="dialog overlay" id="my-dialog">
     <a href="#" class="overlay-close"></a>
 
@@ -128,11 +130,11 @@
 
         </tr>
         </thead>
-        <tbody   style="margin-left: -60px" >
-        <c:set var="products" value="${cart.productList}"/>
+        <tbody   style="margin-left: -60px" id="content123"  >
+      <c:set var="products" value="${cart.productList}"/>
         <c:forEach items="${products}" var="product">
-            <tr>
-                <td>1</td>
+            <tr class="product1">
+                <td></td>
                 <td><img src="${product.img}" alt=""></td>
                 <td>${product.name} </td>
                 <td>${product.price}</td>
@@ -145,6 +147,7 @@
                 <td><button type="button" class="btn btn-danger remove-product" pid="${product.id}"><i class="fas fa-trash-alt"></i></button></td>
 
             </tr>
+
         </c:forEach>
 
         </tbody>
@@ -261,7 +264,15 @@
                 <a onclick="showcart()">
 
                     <i class='bx bxs-cart-alt'style="font-size: 40px;color: rgb(68, 67, 67);" ></i>
-                    <span id="countsp" class="total-cart-gh">${cart.totalPrice1}</span>
+                    <span id="countsp" class="total-cart-gh">
+
+                    </span>
+<%--                    <span id="countsp" >--%>
+<%--                        <div class="total-cart-gh">--%>
+
+<%--                        </div>--%>
+<%--                    </span>--%>
+
                 </a>
             </div>
         </div>
@@ -715,8 +726,15 @@ ts<c:forEach items="${listTra}" var="t">
                                     </button>
                                 </c:if>
                                 <c:if test="${p.quantity>0.0}">
-                                    <a  href="cart-add1?id=${p.id}#drink-menu-section" style="text-decoration: none"><button><i class="fas fa-cart-plus" ></i>
-                                    </button></a>
+                                    <c:if test="${cart.totalPrice1==null}">
+                                        <button style="margin-top: 10%;border-radius: 10px;padding: 16px;background: #31b131;color: #f0f0f0" onclick="Loadmore2('${p.id}')"><i class="fas fa-cart-plus" ></i></button>
+                                        </button></a>
+                                    </c:if>
+<%--                                    <a  href="cart-add1?id=${p.id}#drink-menu-section" style="text-decoration: none"><button><i class="fas fa-cart-plus" ></i>--%>
+                                    <c:if test="${cart.totalPrice1!=null}">
+                                        <button style="margin-top: 10%;border-radius: 10px;padding: 16px;background: #31b131;color: #f0f0f0" onclick="Loadmore1('${p.id}','${cart.totalPrice1}')"><i class="fas fa-cart-plus" ></i></button>
+                                        </button></a>
+                                    </c:if>
                                 </c:if>
 
 
@@ -1071,6 +1089,8 @@ ts<c:forEach items="${listTra}" var="t">
     document.getElementById('${index}').style.color="red";
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
 <script>
     function Loadmore() {
         var amount = document.getElementsByClassName("product").length;
@@ -1089,45 +1109,47 @@ ts<c:forEach items="${listTra}" var="t">
             }
         });
     }
-    // function getBinhLuan(id) {
-    //
-    //     var amount = document.getElementsByClassName("product").length;
-    //
-    //
-    //        alert(id)
-    //
-    //     $.ajax({
-    //         url: "/demo11/Comment",
-    //         type: "get", //send it through get method
-    //         data: {
-    //             exits: id
-    //         },
-    //         // success: function (data) {
-    //         //     var row = document.getElementById("content");
-    //         //     row.innerHTML += data;
-    //         // },
-    //         error: function (xhr) {
-    //             //Do Something to handle error
-    //         }
-    //     });
-    // }
-    // function searchByName(param){
-    //     var txtSearch = param.value;
-    //     $.ajax({
-    //         url: "/demo11/SearchAjaxProduct",
-    //         type: "get", //send it through get method
-    //         data: {
-    //             txt: txtSearch
-    //         },
-    //         success: function (data) {
-    //             var row = document.getElementById("content");
-    //             row.innerHTML = data;
-    //         },
-    //         error: function (xhr) {
-    //             //Do Something to handle error
-    //         }
-    //     });
-    // }
+    function Loadmore1(id,sl) {
+       // var amount112 = document.getElementsByClassName("product1").length;
+        $.ajax({
+            url: "/demo11/cart-add1",
+            type: "get",
+            data: {
+                exits1: id
+            },
+            success: function (data) {
+                 var row = document.getElementById("content123");
+                row.innerHTML -= data;
+                 row.innerHTML += data;
+
+
+                document.getElementById('countsp').textContent=sl;
+                 document.getElementById('show').innerHTML ='<span style="height: 80px;position: absolute;background-color: white;border: solid 2px #31b131 ;width: 30%;height: 50px;z-index: 99;border-radius: 5px;margin-top:13%;font-weight: bold ;color: white;margin-right: -30px;display: flex;justify-content: center"> <a style="color: #31b131;font-weight: bold"><i class="bx bx-check" style="background: #31b131;color: whitesmoke;border-radius: 4px;font-size: 24px;margin: 10px"></i><a style="color: #31b131;margin-top: -25px;font-size: 18px;margin-top: 10px">Da them vao gio hang</a>  !</a></span>';
+            },
+            error: function (xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
+    function Loadmore2(id) {
+        // var amount112 = document.getElementsByClassName("product1").length;
+        $.ajax({
+            url: "/demo11/cart-add1",
+            type: "get",
+            data: {
+                exits1: id
+            },
+            success: function (data) {
+                var row = document.getElementById("content123");
+                row.innerHTML -= data;
+                row.innerHTML += data;
+                document.getElementById('countsp').textContent=3;
+            },
+            error: function (xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
 
     // search-box open close js code
     let navbar = document.querySelector(".navbar");
@@ -1333,7 +1355,30 @@ ts<c:forEach items="${listTra}" var="t">
         var changeText = paragraph[0].style.width = ${1000/auth.hide} ;
         var changeText = paragraph[1].style.color = "red";
     }
+    function recomment(id){
 
+        alert(id);
+        // var xhttp;
+        //
+        //
+        //
+        // var url ="cart-add1?id="+id;
+        // if(window.XMLHttpRequest){
+        //     xhttp= new XMLHttpRequest();
+        // }else{
+        //     xhttp= new ActiveXObject("Microsoft.XMLHTTP")
+        // }
+        // xhttp.onreadystatechange=function ()
+        // {
+        //     // if (xhttp.readyState==4){
+        //     //     var data =xhttp.responseText;
+        //     //      document.getElementById("mycomment").innerHTML="tést";
+        //     // }
+        //
+        // }
+        // xhttp.open("POST",url,true);
+        // xhttp.send();
+    }
 </script>
 </body>
 </html>

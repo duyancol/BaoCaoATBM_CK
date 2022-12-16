@@ -1,5 +1,7 @@
 package com.example.demo11.Controller;
 
+import com.example.demo11.model.Cart;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -16,11 +18,13 @@ doPost(request,response);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        HttpSession  session =request.getSession();
         String username = request.getParameter("user");
         String phone = request.getParameter("phone");
         String adress = request.getParameter("adress");
         String email = request.getParameter("email");
-        String listoder = request.getParameter("listproduct");
+        Cart cart = (Cart) session.getAttribute("cart");
+        String listoder = cart.getTotalName();
 
 
         request.setAttribute("adress", adress);

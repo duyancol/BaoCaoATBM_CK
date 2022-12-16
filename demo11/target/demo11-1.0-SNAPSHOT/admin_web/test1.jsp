@@ -248,7 +248,7 @@
                             <header>Drag & Drop to Upload File</header>
                             <span>OR</span>
 
-                            <input type="file"name="file2" placeholder="Image" required >
+                            <input type="file"name="file2" placeholder="Image" style="background: #f5f1e5;padding: 5px;border-radius: 50px;margin-bottom: 20px" required >
                         </div>
                         </div>
                     </div>
@@ -263,7 +263,7 @@
                             Download
                         </a>
 
-                        <input type="submit" class="btn btn-success" style="padding: 30px"  value="Xác thực">
+                        <input type="submit" class="btn btn-success" style="padding: 26px;border-radius:35px;background: #2BD47D;font-size: 14px ;font-weight: bold"  value="Xác thực" >
                     </div>
                 </form>
 

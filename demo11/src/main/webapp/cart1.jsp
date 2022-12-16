@@ -103,6 +103,7 @@
 
 
 <c:set var="auth" value="${sessionScope.auth}"/>
+<c:set var="cart123" value="${sessionScope.cart}"/>
 
 
 <c:if test="${auth == null }">
@@ -159,7 +160,7 @@
         <div class="dialog-body">
             <a class="dialog-close-btn" href="#">&times;</a>
             <div class="modal-content">
-                                    <form action="xacthuc" method="post">
+                                    <form action="checkControl" method="post">
                                         <div class="modal-header">
                                             <h4 class="modal-title">Add Product</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -181,7 +182,7 @@
                                             </div>
 
 
-                                            <c:set var="products" value="${cart.totalName}"/>
+                                            <c:set var="products" value="${cart123.totalName}"/>
                                             <c:set var="productst" value="${cart.productList}"/>
 
 
