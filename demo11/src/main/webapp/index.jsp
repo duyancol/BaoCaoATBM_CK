@@ -1144,6 +1144,8 @@ ts<c:forEach items="${listTra}" var="t">
                 row.innerHTML -= data;
                 row.innerHTML += data;
                 document.getElementById('countsp').textContent=3;
+                document.getElementById('show').innerHTML ='<span style="height: 80px;position: absolute;background-color: white;border: solid 2px #31b131 ;width: 30%;height: 50px;z-index: 99;border-radius: 5px;margin-top:13%;font-weight: bold ;color: white;margin-right: -30px;display: flex;justify-content: center"> <a style="color: #31b131;font-weight: bold"><i class="bx bx-check" style="background: #31b131;color: whitesmoke;border-radius: 4px;font-size: 24px;margin: 10px"></i><a style="color: #31b131;margin-top: -25px;font-size: 18px;margin-top: 10px">Da them vao gio hang</a>  !</a></span>';
+
             },
             error: function (xhr) {
                 //Do Something to handle error

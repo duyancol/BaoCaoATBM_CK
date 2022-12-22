@@ -160,7 +160,7 @@
         <div class="dialog-body">
             <a class="dialog-close-btn" href="#">&times;</a>
             <div class="modal-content">
-                                    <form action="checkControl" method="post">
+                                    <form action="xacthuc" method="post">
                                         <div class="modal-header">
                                             <h4 class="modal-title">Add Product</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

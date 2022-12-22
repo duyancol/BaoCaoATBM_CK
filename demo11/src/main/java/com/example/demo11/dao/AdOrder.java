@@ -262,11 +262,11 @@ public class AdOrder {
     }
     public static void main(String[] args) {
     AdOrder dao = new AdOrder();
+        System.out.println(dao.getAllOrder().size());
 
 
 
-
-        System.out.println(dao.getAllOrdertheomonth("2022-11"));
+//        System.out.println(dao.getAllOrdertheomonth("2022-11"));
     }
 
 }

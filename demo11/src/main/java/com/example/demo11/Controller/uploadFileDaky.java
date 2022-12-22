@@ -1,5 +1,6 @@
 package com.example.demo11.Controller;
 
+import com.example.demo11.dao.AdOrder;
 import com.example.demo11.dao.ProductAdminDao;
 
 import javax.servlet.*;
@@ -15,12 +16,15 @@ public class uploadFileDaky extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-
+        AdOrder adOrder = new AdOrder();
+        int maHd = adOrder.getAllOrder().size()+1;
 
         Part part = request.getPart("file2");
 
         String realPass = request.getServletContext().getRealPath("/file");
-        String filename = Path.of("daky"+part.getSubmittedFileName()).getFileName().toString();
+//        String filename = Path.of("daky"+part.getSubmittedFileName()).getFileName().toString();
+        String filename = Path.of("HoaDon"+String.valueOf(maHd)+"daky"+".pdf").getFileName().toString();
+
         if (!Files.exists(Path.of(realPass))) {
             Files.createDirectories(Path.of(realPass));
             response.sendRedirect("Servlet3");

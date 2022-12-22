@@ -1,5 +1,6 @@
 package com.example.demo11.Controller;
 
+import com.example.demo11.dao.AdOrder;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -23,7 +24,10 @@ doPost(request,response);
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try(PrintWriter out =response.getWriter()){
-            String name="tp3.pdf";
+            AdOrder adOrder = new AdOrder();
+            int maHd = adOrder.getAllOrder().size()+1;
+            String name="HoaDon"+String.valueOf(maHd)+".pdf";
+
             String path=getServletContext().getRealPath("/" + "file" + File.separator + name);
             String path1=getServletContext().getRealPath("/" + "file" + File.separator + "atbm12345.jpg");
             Document document = new Document();

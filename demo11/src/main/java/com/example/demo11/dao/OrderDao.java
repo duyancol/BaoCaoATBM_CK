@@ -22,6 +22,11 @@ public class OrderDao {
             return handle.createQuery("SELECT * FROM order_detail WHERE order_id=?").bind(0,id).mapToBean(Detail.class).stream().collect(Collectors.toList());
         });
     }
+    public List<Order> getAlloder(){
+        return   JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM `order`").mapToBean(Order.class).stream().collect(Collectors.toList());
+        });
+    }
     public Order getByID(String id){
 
         return   JDBIConnector.get().withHandle(handle -> {
@@ -114,7 +119,8 @@ public class OrderDao {
 //    }
 public static void main(String[] args) {
     OrderDao orderDao = new OrderDao();
-    System.out.println(orderDao.getAll(String.valueOf(9)).size());
+    System.out.println(orderDao.getAlloder().size());
+
 }
 
 
