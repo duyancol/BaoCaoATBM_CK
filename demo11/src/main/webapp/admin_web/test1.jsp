@@ -23,6 +23,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="com.google.gson.Gson" %>
+<%@ page import="com.example.demo11.dao.AdOrder" %>
 
 <%
     String username = (String) request.getAttribute("username");
@@ -30,6 +31,11 @@
     String email = (String) request.getAttribute("email");
     String adress = (String) request.getAttribute("adress");
     String listoder = (String) request.getAttribute("listoder");
+
+    AdOrder adOrder = new AdOrder();
+    int maHd = adOrder.getAllOrder().size()+1;
+    String namefile="HoaDon"+String.valueOf(maHd)+".pdf";
+    String namefiledaky="HoaDon"+String.valueOf(maHd)+"daky"+".pdf";
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -172,7 +178,7 @@
         </div>
         <div class="modal-footer">
             <h2 style="margin-right: 240px"><b style="color: #4CAF50">B1: </b>Bạn cần tải file pdf xuống để ký vào file</h2>
-            <a href="Servlet5?filename=tp3.pdf" class="btn btn-dark rounded-pill py-2 btn-block"style="background: #65e865;width: 100px">
+            <a href="Servlet5?filename=<%=namefile%>" class="btn btn-dark rounded-pill py-2 btn-block"style="background: #65e865;width: 100px">
 
 
 
@@ -253,7 +259,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="Servlet5?filename=dakytp3.pdf" class="btn btn-dark rounded-pill py-2 btn-block"style="background: #65e865;width: 100px">
+                        <a href="Servlet5?filename=<%=namefiledaky%>" class="btn btn-dark rounded-pill py-2 btn-block"style="background: #65e865;width: 100px">
 
 
 
