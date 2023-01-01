@@ -12,6 +12,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String thongbao = (String) request.getAttribute("thongbao");
+%>
 <html>
 <head>
     <title>Title</title>
@@ -47,6 +50,23 @@
 </head>
 
 <body>
+
+<%
+    if (thongbao != null) {
+%>
+<script>
+   alert(<%=thongbao%>);
+</script>
+
+<div style="color: #31b131;font-weight: bold;display: flex;justify-content: center">
+    <%=thongbao%>
+</div>
+<%
+
+    }
+%>
+
+<%--<embed src="file/HoaDon23daky.pdf" width="800" height="500" type="application/pdf">--%>
 <%--<div class="paging">--%>
 <%--    <c:forEach begin="1" end="${end}" var="i">--%>
 <%--        <a href="#">${i}</a>--%>
@@ -83,26 +103,26 @@
         <div class="id" >
 
             <div class="img-container">
-                <img src="${auth.avata}" style="margin-right: 190px;" alt="">
+                <img src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=255&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7" style="margin-right: 190px;" alt="">
                 <div class="title" style="font-size: 17px;
     font-weight: 700;
     color: #292525;">
-                    <h2>${auth.username}</h2>
+                    <h2>Nguyen Duy</h2>
                 </div>
             </div>
             <div class="maincontainer">
-                <p><i class="infor far fa-file-signature">${auth.name}       Age: ${auth.age}</i></p>
+                <p><i class="infor far fa-file-signature">${auth.name}</i></p>
 
                 <p><img src="assets/icon/email.png" style="height: 20px;width: 20px;"><i class="infor">${auth.email}</i></p>
                 <p><i class="infor bx bx-phone-call" style="margin-left: -4%;padding-right: 40px">          ${auth.phone}</i></p>
                 <hr>
                 <p><b><i class="infor"></i></b></p>
-                <p>Diem tich luy</p>
+                <p>Điểm tích lũy</p>
                 <div class="skill">
                     <div class="bar" style="width: 70%;">${auth.hide}</div>
                 </div>
-                <button class="btn">More</button>
-                <div class="folow">fOLOW ME</div>
+               <a href="LoadFormYeucau"> <button class="btn" style="width: 200px">Yêu cầu key mới</button></a>
+                <div class="folow">FOLOW ME</div>
                 <div class="soc">
                     <id class="fa"><i class="fab fa-youtube"></i></id>
                     <id class="fa"><i class="fab fa-instagram"></i></id>
@@ -224,7 +244,7 @@
 <%--                        <a style="font-weight: bold ;font-size: 150%;color: #4CAF50;margin-top: 20px;margin-right: 20px"></a>--%>
                         <a href="logout"><i class="fas fa-sign-out-alt" style="font-size: 20px;margin-left: 20px"></i>Logout</a>
                         <c:if test="${auth.role>=1}">
-                            <a href="Dashboard"><img src="assets/users-cog-solid.svg" style="font-size: 20px;margin-left: 20px"></img> ADmin</a>
+                            <a href="Dashboard"><img src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=255&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7" style="width: 32px;margin-left: 20px;"></img> Admin</a>
                             </c:if>
                         </c:if> </a>
             </a>
@@ -727,7 +747,7 @@ ts<c:forEach items="${listTra}" var="t">
                                 </c:if>
                                 <c:if test="${p.quantity>0.0}">
                                     <c:if test="${cart.totalPrice1==null}">
-                                        <button style="margin-top: 10%;border-radius: 10px;padding: 16px;background: #31b131;color: #f0f0f0" onclick="Loadmore2('${p.id}')"><i class="fas fa-cart-plus" ></i></button>
+                                        <button style="margin-top: 10%;border-radius: 10px;padding: 16px;background: #31b131;color: #f0f0f0" onclick="Loadmore1('${p.id}','0')"><i class="fas fa-cart-plus" ></i></button>
                                         </button></a>
                                     </c:if>
 <%--                                    <a  href="cart-add1?id=${p.id}#drink-menu-section" style="text-decoration: none"><button><i class="fas fa-cart-plus" ></i>--%>
@@ -1124,6 +1144,8 @@ ts<c:forEach items="${listTra}" var="t">
 
 
                 document.getElementById('countsp').textContent=sl;
+
+
                  document.getElementById('show').innerHTML ='<span style="height: 80px;position: absolute;background-color: white;border: solid 2px #31b131 ;width: 30%;height: 50px;z-index: 99;border-radius: 5px;margin-top:13%;font-weight: bold ;color: white;margin-right: -30px;display: flex;justify-content: center"> <a style="color: #31b131;font-weight: bold"><i class="bx bx-check" style="background: #31b131;color: whitesmoke;border-radius: 4px;font-size: 24px;margin: 10px"></i><a style="color: #31b131;margin-top: -25px;font-size: 18px;margin-top: 10px">Da them vao gio hang</a>  !</a></span>';
             },
             error: function (xhr) {

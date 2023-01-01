@@ -1,6 +1,7 @@
 package com.example.demo11.Controller;
 
 import com.example.demo11.dao.AdOrder;
+import com.example.demo11.model.Cart;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -23,6 +24,13 @@ doPost(request,response);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        HttpSession  session =request.getSession();
+        String username = request.getParameter("username");
+        String phone = request.getParameter("phone");
+        String adress = request.getParameter("adress");
+        String email = request.getParameter("email");
+        Cart cart = (Cart) session.getAttribute("cart");
+        String listoder = cart.getTotalName();
         try(PrintWriter out =response.getWriter()){
             AdOrder adOrder = new AdOrder();
             int maHd = adOrder.getAllOrder().size()+1;
@@ -324,7 +332,15 @@ doPost(request,response);
 //            document.add(paragraphNBHK1);
 //            document.add(paragraphNBHKt1);
                 document.close();
-                request.getRequestDispatcher("Servlet4").forward(request,response);
+
+
+
+                request.setAttribute("adress", adress);
+                request.setAttribute("username", username);
+                request.setAttribute("phone", phone);
+                request.setAttribute("email", email);
+                request.setAttribute("listoder", listoder);
+                request.getRequestDispatcher("admin_web/test1.jsp").forward(request,response);
 
             } catch (DocumentException e) {
                 e.printStackTrace();

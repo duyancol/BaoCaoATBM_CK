@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+<%
+    String capnhat = (String) request.getAttribute("capnhat");
+%>
 <%--
   Created by IntelliJ IDEA.
   User: HP
@@ -36,6 +39,7 @@
 <link href="css/manager.css" rel="stylesheet" type="text/css"/>
 
 <style>
+    .hidden {display:none}
     img{
         width:80px;
         height: 80px;
@@ -85,7 +89,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="Userkey">
                 <i class='bx bx-user' ></i>
                 <span class="links_name">Team</span>
             </a>
@@ -134,7 +138,16 @@
     </nav>
 
     <div class="home-content" >
+        <%
+            if (capnhat != null) {
+        %>
+        <div style="color: #5eff00;font-size: 16px;padding: 10px;margin-left: 50px" >
+            <%= capnhat%>
+        </div>
+        <%
 
+            }
+        %>
         <div class="sales-boxes">
             <div class="recent-sales box" style="width: 100%">
                 <%--                <div class="title">Product</div>--%>
@@ -153,7 +166,7 @@
                                 </div>
                             </div>
 
-                            <table id="" class="table table-striped table-hover">
+                            <table id="example" class="table table-striped table-hover">
                                 <thead>
                                 <tr>
                                     <th>
@@ -196,30 +209,39 @@
 
 
 
-                                                    <option> <c:if test="${tra.status==0.0}">
+                                                    <option>
+                                                        <c:if test="${tra.status==0.0}">
                                                         <div>
-                                                            Dang xu ly
+                                                            Đang chờ xác thực
                                                         </div>
-                                                    </c:if>
+                                                        </c:if>
                                                         <c:if test="${tra.status==1.0}">
                                                             <div>
-                                                                Dang giao hang
+                                                                Đã xác thực
                                                             </div>
                                                         </c:if>
                                                         <c:if test="${tra.status==2.0}">
                                                             <div>
-                                                                Da giao hang
+                                                               Đang giao hàng
                                                             </div>
                                                         </c:if>
                                                         <c:if test="${tra.status==3.0}">
                                                             <div>
-                                                                Huy don hang
+                                                                Đã giao hàng
                                                             </div>
-                                                        </c:if></option>
-                                                    <option>Da giao hang</option>
-                                                    <option>Dang giao hang</option>
-                                                    <option>Huy don hang</option>
-                                                    <option>Dang xu ly</option>
+                                                        </c:if>
+
+                                                    <c:if test="${tra.status==4.0}">
+                                                        <div>
+                                                            Hủy đơn hàng
+                                                        </div>
+                                                    </c:if>
+                                                    </option>
+                                                    <option>Đang chờ xác thực</option>
+                                                    <option>Đã xác thực</option>
+                                                    <option>Đang giao hàng</option>
+                                                    <option>Đã giao hàng</option>
+                                                    <option>Hủy đơn hàng</option>
 
 
 
@@ -238,11 +260,15 @@
 
                                         <td>
                                             <input type="submit" class="btn btn-info" value="Save">
-
+                                            <a href="oderadmindetail?id=${tra.id}&username=${tra.user.name}"  class="btn btn-success" data-toggle="modal" style="width: 60px"><span>Xem</span></a>
+<%--                                            <button type="submit" class="btn"  onclick="showpopup('${tra.id}')">seen</button>--%>
                                         </td>
-                                    </tr>
+
                                     </form>
+                                    </tr>
+
                                 </c:forEach>
+
                                 </tbody>
 
                             </table>
@@ -300,39 +326,8 @@
                         </div>
                     </div>
                     <!-- Edit Modal HTML -->
-                    <div id="editEmployeeModal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form>
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Edit Employee</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <input type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Address</label>
-                                            <textarea class="form-control" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Phone</label>
-                                            <input type="text" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                        <input type="submit" class="btn btn-info" value="Save">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                    <div id="popub" class="popub">
+                        <a>As</a>
                     </div>
                     <!-- Delete Modal HTML -->
                     <div id="deleteEmployeeModal" class="modal fade">
@@ -363,6 +358,7 @@
 
         </div>
     </div>
+
 </section>
 <script src="js/manager.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
@@ -384,6 +380,12 @@
     $(document).ready(function () {
         $('#example').DataTable();
     });
+    function showpopup(id) {
+        document.getElementById("popupwindow").classList.toggle("hidden");
+    }
+    // $(document).ready(function () {
+    //     $('#example').DataTable();
+    // });
 </script>
 
 </body>

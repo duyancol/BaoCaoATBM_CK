@@ -31,6 +31,7 @@
     String email = (String) request.getAttribute("email");
     String adress = (String) request.getAttribute("adress");
     String listoder = (String) request.getAttribute("listoder");
+    String thongbao = (String) request.getAttribute("thongbao");
 
     AdOrder adOrder = new AdOrder();
     int maHd = adOrder.getAllOrder().size()+1;
@@ -206,6 +207,17 @@
             </a>
         </div>
     </div>
+    <%
+        if (thongbao != null) {
+    %>
+    <div style="color: #ffea00;font-size: 16px;font-weight: bold" >
+        <%= thongbao%>
+    </div>
+    <%
+
+        }
+    %>
+
     <div id="editEmployeeModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -220,19 +232,19 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group"style="display: none">
+                        <div class="form-group" style="display: none">
                             <label>Tên khách hàng : <%=username%></label>
                             <input name="username" type="text" class="form-control" required value=" <%=username%>">
                         </div>
-                        <div class="form-group"style="display: none">
+                        <div class="form-group" style="display: none">
                             <label>Số điện thoại : </label>
                             <input name="phone" type="text" class="form-control" required value="0377155498" >
                         </div>
-                        <div class="form-group"style="display: none">
+                        <div class="form-group" style="display: none">
                             <label>Địa chỉ : <%=adress%></label>
                             <input name="adress" type="text" class="form-control" required value="<%=adress%>" >
                         </div>
-                        <div class="form-group" style="display: none">
+                        <div class="form-group"  style="display: none">
                             <label>Email : <%=email%></label>
                             <input name="email" type="text" class="form-control" required value="<%=email%>" >
                         </div>
@@ -281,11 +293,11 @@
 
         <div class="dialog-body">
             <a class="dialog-close-btn" href="#">&times;</a>
-            <div class="modal-content">
+
                 <form action="CreateKeyController" method="post">
                     <div class="modal-header" >
                         <h4 class="modal-title" >Xác thực</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
                     </div>
                     <div class="modal-body">
                         <c:set var="auth" value="${sessionScope.auth}"/>
@@ -293,7 +305,7 @@
                             <label>Email</label>
                             <input name="email" type="text" class="form-control" value="${auth.email}" required>
                         </div>
-                        <img src="assets/images.png"  style="margin-left: 45px">
+
                         <div class="modal-header">
 
                             <h2 class="modal-title" style="justify-content: center">Bạn cần xác thực danh tính để đặt</h2>
@@ -301,14 +313,18 @@
 
                             <%--                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
                         </div>
-                        <div class="modal-body" >
+                        <div class="modal-body"  >
+                            <div class="form-group"  style="display: none">
+                                <label>id : </label>
+                                <input name="iduser" type="text" class="form-control" required value="${auth.id}">
+                            </div>
                             <div class="form-group">
-                                <label>Tên khách hàng : </label>
-                                <input name="username" type="text" class="form-control" required value=" ">
+                                <label>Tên khách hàng (Họ tên đầy đủ) : </label>
+                                <input name="ten" type="text" class="form-control" required value="">
                             </div>
                             <div class="form-group">
                                 <label>Mật khẩu : </label>
-                                <input name="password" type="text" class="form-control" required value="" >
+                                <input name="matkhau" type="text" class="form-control" required value="" >
                             </div>
                             <div class="form-group">
                                 <label>Nhập lại mật khẩu : </label>
@@ -316,11 +332,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Bí danh : </label>
-                                <input name="author" type="text" class="form-control" required value="" >
+                                <input name="bidanhmoi" type="text" class="form-control" required value="" >
                             </div>
                             <div class="form-group" >
                                 <label>Tỉnh/TP : </label>
-                                <input name="city" type="text" class="form-control" required value="" >
+                                <input name="diachi" type="text" class="form-control" required value="" >
                             </div>
                             <div class="form-group">
                                 <label>Địa chỉ hiện tại :</label>
@@ -339,7 +355,7 @@
                             <input type="submit" class="btn btn-success"  value="Create">
                         </div>
                 </form>
-            </div>
+
         </div>
     </div>
 </div>
