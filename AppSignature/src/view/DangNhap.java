@@ -2,14 +2,31 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+import java.util.Base64;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import controller.KeyStoreJKS;
+import controller.f;
+import controller.test_pdf;
 
 public class DangNhap extends JFrame implements ActionListener{
 	   public DangNhap() {
 	        initComponents();
 	    }
 	    @SuppressWarnings("unchecked")
+	    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
 	    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
 	    private void initComponents() {
 
@@ -22,6 +39,7 @@ public class DangNhap extends JFrame implements ActionListener{
 	        jLabel4 = new javax.swing.JLabel();
 	        jPasswordField1 = new javax.swing.JPasswordField();
 	        jButton2 = new javax.swing.JButton();
+	        jLabel5 = new javax.swing.JLabel();
 
 	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +83,8 @@ public class DangNhap extends JFrame implements ActionListener{
 	            }
 	        });
 
+	        jLabel5.setText("path");
+
 	        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
 	        kGradientPanel1.setLayout(kGradientPanel1Layout);
 	        kGradientPanel1Layout.setHorizontalGroup(
@@ -81,7 +101,9 @@ public class DangNhap extends JFrame implements ActionListener{
 	                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
 	                                .addComponent(jButton1)
-	                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+	                                .addGap(12, 12, 12)
+	                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 	                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
 	                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
 	                            .addComponent(jPasswordField1))
@@ -107,7 +129,9 @@ public class DangNhap extends JFrame implements ActionListener{
 	                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
 	                        .addGap(18, 18, 18)
-	                        .addComponent(jButton1))
+	                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                            .addComponent(jButton1)
+	                            .addComponent(jLabel5)))
 	                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
 	                        .addGap(25, 25, 25)
 	                        .addComponent(jLabel2)))
@@ -129,7 +153,7 @@ public class DangNhap extends JFrame implements ActionListener{
 
 	        pack();
 	        addAction();
-	    }// </editor-fold>                        
+	    }// </editor-fold>                             
 
 	    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 	        // TODO add your handling code here:
@@ -185,24 +209,84 @@ public class DangNhap extends JFrame implements ActionListener{
 	    private javax.swing.JLabel jLabel2;
 	    private javax.swing.JLabel jLabel3;
 	    private javax.swing.JLabel jLabel4;
+	    private javax.swing.JLabel jLabel5;
 	    private javax.swing.JPasswordField jPasswordField1;
 	    private javax.swing.JTextField jTextField2;
 	    private keeptoo.KGradientPanel kGradientPanel1;
 	    
 	    private void addAction() {
 			jButton2.addActionListener(this);
+			jButton1.addActionListener(this);
 		}
 
 
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			JFileChooser chooser;
+			FileNameExtensionFilter filenameFilter;
+			if (e.getSource() == jButton1) {
+				chooser = new JFileChooser();
+				filenameFilter = new FileNameExtensionFilter("file p12", "p12");
+				chooser.setFileFilter(filenameFilter);
+				chooser.setMultiSelectionEnabled(false);
+				int x = chooser.showDialog(this, "chon file");
+				if (x == JFileChooser.APPROVE_OPTION) {
+					File file = chooser.getSelectedFile();
+					
+					try {
+						jLabel2.setText(file.getAbsolutePath());
+						
+						
+					} catch (Exception e2) {
+						JOptionPane.showMessageDialog(this, "Chỉ hỗ trợ file .p12 !");
+					}
+
+				}
+			}
 			if (e.getSource() == jButton2) {
-				Menu view  = new Menu();
-				view.setVisible(true);
-				view.setLocationRelativeTo(null);
-				this.setVisible(false);
+				controller.KeyStoreJKS stk = new KeyStoreJKS();
+				controller.f kyfile= new f();
+				kyfile.signDocument1("tp3.pdf",jPasswordField1.getText(),jTextField2.getText(),jLabel2.getText());
+				controller.test_pdf pdf= new test_pdf();
+			
+				try {
+					
+		
+					
+					String thongtin =pdf.name();
+					System.out.println(thongtin);
+					String al =pdf.getAL();
+					String validay =kyfile.getValidate(jPasswordField1.getText(),jLabel2.getText());
+					PublicKey key =	stk.getPublickeyFromKeyStore(jLabel2.getText(),jTextField2.getText(),jPasswordField1.getText());
+					String key1=	Base64.getEncoder().encodeToString(key.getEncoded());
+						System.out.println(key1);
+					Menu view  = new Menu(jLabel2.getText(),jTextField2.getText(),jPasswordField1.getText(),key1,thongtin,al,validay);
+					view.setVisible(true);
+					view.setLocationRelativeTo(null);
+					this.setVisible(false);
+					
+				} catch (UnrecoverableKeyException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (KeyStoreException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (NoSuchAlgorithmException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (CertificateException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
+
 			
 			}
 			
