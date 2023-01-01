@@ -16,26 +16,33 @@ public class UpdateStatus extends HttpServlet {
 
         String id = request.getParameter("id");
         String status = request.getParameter("status");
-        if(status.equals("Da giao hang")){
-            status="2";
-            updatestatus dao = new updatestatus();
-            dao.updateStatus(status,id);
-            response.sendRedirect("OrderAdminControl");
-        }
-        if(status.equals("Dang xu ly")){
+
+        if(status.equals("Đang chờ xác thực")){
             status="0";
             updatestatus dao = new updatestatus();
             dao.updateStatus(status,id);
             response.sendRedirect("OrderAdminControl");
         }
-        if(status.equals("Dang giao hang")){
+        if(status.equals("Đã xác thực")){
             status="1";
             updatestatus dao = new updatestatus();
             dao.updateStatus(status,id);
             response.sendRedirect("OrderAdminControl");
         }
-        if(status.equals("Huy don hang")){
+        if(status.equals("Đang giao hàng")){
+            status="2";
+            updatestatus dao = new updatestatus();
+            dao.updateStatus(status,id);
+            response.sendRedirect("OrderAdminControl");
+        }
+        if(status.equals("Đã giao hàng")){
             status="3";
+            updatestatus dao = new updatestatus();
+            dao.updateStatus(status,id);
+            response.sendRedirect("OrderAdminControl");
+        }
+        if(status.equals("Hủy đơn hàng")){
+            status="4";
             updatestatus dao = new updatestatus();
             dao.updateStatus(status,id);
             response.sendRedirect("OrderAdminControl");

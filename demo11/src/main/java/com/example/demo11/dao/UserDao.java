@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class UserDao {
     private static UserDao instance;
-    private UserDao(){
+    public UserDao(){
 
     }
     public static UserDao getInstance() {
@@ -126,10 +126,21 @@ public class UserDao {
             return handle.createQuery("SELECT * FROM `user` where role =0 ORDER BY hide DESC  ").mapToBean(User.class).stream().collect(Collectors.toList());
         });
     }
+    public List<User> getAllUser(){
+        return   JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM `user` where role=0").mapToBean(User.class).stream().collect(Collectors.toList());
+        });
+    }
+    public User getUserByUserName( String username){
+        return   JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM `user` where username =?  ").bind(0,username).mapToBean(User.class).first();
+        });
+    }
+
 
     public static void main(String[] args) {
         int code = (int) Math.floor(((Math.random() * 899999) + 100000));
         UserDao userDao = new UserDao();
-        System.out.println(userDao.hashPassword("12345678"));
+        System.out.println(userDao.getUserByUserName("19130057@st.hcmuaf.edu.vn").getId());
     }
 }

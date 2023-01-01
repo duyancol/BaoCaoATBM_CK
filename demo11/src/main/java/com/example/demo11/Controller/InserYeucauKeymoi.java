@@ -1,22 +1,13 @@
-package com.example.demo11.controlAdmin;
-
-import com.example.demo11.ChuKiDienTu.KeyStoreJKS;
-import com.example.demo11.ChuKiDienTu.MD5_SHA;
-import com.example.demo11.ChuKiDienTu.Mailer;
-import com.example.demo11.dao.userkeyDao;
+package com.example.demo11.Controller;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.*;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
-import java.util.Base64;
+import java.io.IOException;
+import  com.example.demo11.dao.userkeyDao;
 
-@WebServlet(name = "CreateKeyController", value = "/CreateKeyController")
-public class CreateKeyController extends HttpServlet {
+@WebServlet(name = "InserYeucauKeymoi", value = "/InserYeucauKeymoi")
+public class InserYeucauKeymoi extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 doPost(request, response);
@@ -35,10 +26,6 @@ doPost(request, response);
 
         userkeyDao dao = new userkeyDao();
         dao.insertYeuCauKey(iduser,bidanhmoi,matkhau,diachi,ten);
-        request.setAttribute("thongbao","Đã gửi yêu cầu ,xin đợi ít phút để duyệt ! Bạn cần check mail để dowload key mà chúng tôi cung cấp !");
-        request.getRequestDispatcher("admin_web/test1.jsp").forward(request,response);
-
-
-
+        request.getRequestDispatcher("Load8product").forward(request,response);
     }
 }

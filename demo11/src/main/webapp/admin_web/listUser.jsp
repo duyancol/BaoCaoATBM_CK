@@ -8,6 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+<%
+    String baoloi = (String) request.getAttribute("baoloi");
+
+
+
+%>
 <html>
 <head>
     <title>Title</title>
@@ -15,22 +21,22 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="css/manager.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="css/manager.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="css/comment.css">
 <link rel="stylesheet" href="css/listComment.css">
 
-    <style>
-        img{
-            width:80px;
-            height: 80px;
-        }
-    </style>
+<style>
+    img{
+        width:80px;
+        height: 80px;
+    }
+</style>
 </head>
 <body>
 
@@ -132,83 +138,33 @@
 
                 <div class="sales-details">
                     <section>
-                        <input class="input" type="radio" name="box" id="box3"  value="post" onclick="commentL('${m.commentid}','${details.id}')" >
+                        <input class="input" type="radio" name="box" id="box3"  value="post" onclick="commentL('${m.commentid}')" >
                         <div class="rt-container">
                             <div class="col-rt-12">
 
                                 <div class="content">
+                                    <%
+                                        if (baoloi != null) {
+                                    %>
+                                    <div style="padding: 20px 40px;border: #4CAF50 solid 2px;border-radius: 20px">
+                                        <h2 style="font-weight: bold;color: #31b131"><%=baoloi%></h2>
+                                    </div>
+                                    <%
+
+                                        }
+                                    %>
+
+
                                     <h2 class="mytext">(${ttcom}) Readers Comments </h2>
 
                                     <div id="recomment" class="tongbl">
-<%--                                        <c:forEach items="${listComment}" var="m">--%>
-<%--                                            <ol>--%>
-<%--                                                <li>--%>
 
-
-<%--                                                    <div class="comment_box cs"> <a href="#"> <img src="avatar.jpg" alt="avatar"> </a>--%>
-<%--                                                        <div class="inside_comment">--%>
-<%--                                                            <div class="comment-meta">--%>
-<%--                                                                <div class="commentsuser">${m.username} </div>--%>
-<%--                                                                <div class="comment_date">December 1, 2012 at 1:32 am</div>--%>
-<%--                                                            </div>--%>
-<%--                                                        </div>--%>
-<%--                                                        <div class="comment-body">--%>
-
-<%--                                                            <p>${m.content}</p>--%>
-<%--                                                            <p>${m.product.name}</p>--%>
-<%--                                                        </div>--%>
-<%--                                                        <div class="reply"> <a href="#">Reply</a> </div>--%>
-
-<%--                                                        <div class="arrow-down"></div>--%>
-<%--                                                    </div>--%>
-
-
-
-<%--                                                    <ul class="children">--%>
-<%--                                                        <li>--%>
-<%--                                                            <!--Comment Box 2-->--%>
-
-<%--                                                        </li>--%>
-<%--                                                    </ul>--%>
-<%--                                                </li>--%>
-<%--                                            </ol>--%>
-
-
-<%--                                        </c:forEach>--%>
 
 
                                     </div>
                                     <div id="respond">
                                         <h3>Leave A Response</h3>
                                         <p>Your email address will not be published with your comments.</p>
-                                        <form id="nameform" method="post" class="nameform" name="myform">
-                                            <div class="commentfields">
-                                                <label class="name">Name <span>*</span></label>
-                                                <input name="username" id="cname" class="comment-input required" type="text" >
-                                            </div>
-
-                                            <div class="commentfields">
-                                                <label>Comments <span>*</span></label>
-                                                <textarea id="ccomment" class="comment-textarea required" name="content"></textarea>
-                                            </div>
-                                            <div class="commentfields">
-                                                <input class="commentbtn" type="button" value="post"  >
-                                            </div>
-                                        </form>
-                                        <form  method="post" class="nameform" name="myreform">
-                                            <div class="commentfields">
-                                                <label class="name">Name <span>*</span></label>
-                                                <input name="reusername"  class="comment-input required" type="text" >
-                                            </div>
-
-                                            <div class="commentfields">
-                                                <label>Comments <span>*</span></label>
-                                                <textarea  class="comment-textarea required" name="recontent"></textarea>
-                                            </div>
-                                            <div class="commentfields">
-                                                <input class="commentbtn" type="button" value="post" >
-                                            </div>
-                                        </form>
 
 
                                     </div>
@@ -237,14 +193,13 @@
         }else
             sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
     }
-    function commentL(commentid,idcom){
+    function commentL(userid){
         var xhttp;
-        var username =document.myform.username.value;
-        var content=document.myform.content.value;
+
 
         var t=2;
         var amount = document.getElementsByClassName("layid");
-        var url ="listcomentAD?content="+content+"&idcom="+idcom+"&username="+username;
+        var url ="listUser?userid="+userid;
         if(window.XMLHttpRequest){
             xhttp= new XMLHttpRequest();
         }else{
@@ -261,14 +216,12 @@
         xhttp.open("POST",url,true);
         xhttp.send();
     }
-    function showAlert(commentid,idcom) {
+    function showAlert(commentid) {
         // var message = "Đây là cảnh báo!"+commentid+id;
         // alert(message);
         var xhttp;
-        var username =document.myform.username.value;
-        var content=document.myform.content.value;
 
-        var url ="listcomentAD?commentid="+commentid+"content="+content+"&idcom="+idcom+"&username="+username;
+        var url ="listUser?commentid="+commentid;
         if(window.XMLHttpRequest){
             xhttp= new XMLHttpRequest();
         }else{

@@ -198,7 +198,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <a href="#my-dialog" class="btn btn-dark rounded-pill py-2 btn-block"style="background: #65e865">Oder</a>
+                        <a href="#my-dialog" class="btn btn-dark rounded-pill py-2 btn-block"style="background: #65e865;width: 100px">Oder</a>
                     </div>
                 </form>
             </div>
@@ -209,11 +209,11 @@
 
         <div class="dialog-body">
             <a class="dialog-close-btn" href="#">&times;</a>
-            <div class="modal-content">
+
                 <form action="DownloadHoaDon" method="post">
                     <div class="modal-header" >
                         <h4 class="modal-title" >Xác thực</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
                     </div>
                     <div class="modal-body">
                         <c:set var="auth" value="${sessionScope.auth}"/>
@@ -229,14 +229,14 @@
 
 <%--                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
                         </div>
-                        <div class="modal-body" style="display: none">
-                            <div class="form-group">
+                        <div class="modal-body" style="display:none ">
+                            <div class="form-group" >
                                 <label>Tên khách hàng : <%=username%></label>
                                 <input name="username" type="text" class="form-control" required value=" <%=username%>">
                             </div>
                             <div class="form-group">
                                 <label>Số điện thoại : <%=phone%></label>
-                                <input name="phone" type="text" class="form-control" required value="<%=phone%>" >
+                                <input name="phone" type="text" class="form-control" required value="0377155498" >
                             </div>
                             <div class="form-group">
                                 <label>Địa chỉ : <%=adress%></label>
@@ -257,7 +257,7 @@
                         <input type="submit" style="background: #4CAF50" class="btn btn-success"  value="Continue">
                     </div>
                 </form>
-            </div>
+
         </div>
     </div>
 </div>
